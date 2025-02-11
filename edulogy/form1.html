@@ -34,45 +34,40 @@
                 <h4 class="mb-4">Student Information Form</h2>
                 <form>                                           
                     <div class="d-flex justify-content-center align-items-center">
-                        <div id="gameSelection">
-                            <div class="form-group">
-                                <label for="game1">Sport 1:</label>
-                                <select name="games[]" class="game-dropdown" required>
-                                    <option value="" disabled selected>Select Here</option>
-                                    <option value="event1">Event 1</option>
-                                    <option value="event2">Event 2</option>
-                                    <option value="event3">Event 3</option>
-                                </select>
+                    <!-- Button to trigger the modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gameModal">
+                        Select Sports
+                    </button>
+
+                    <!-- Modal Structure -->
+                    <div class="modal fade" id="gameModal" tabindex="-1" aria-labelledby="gameModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="gameModalLabel">Select Sports</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="games">Choose Sports:</label>
+                                        <input type="checkbox" name="games[]" value="Football"> Football
+                                        <input type="checkbox" name="games[]" value="Cricket"> Cricket
+                                        <input type="checkbox" name="games[]" value="Basketball"> Basketball
+                                        <!-- Add more sports if needed -->
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
-                            <button type="button" id="addGame" class="btn btn-secondary mt-2">+ Add Another Game</button>
                         </div>
-                        
-                        <script>
-                        document.getElementById("addGame").addEventListener("click", function () {
-                            let gameSelection = document.getElementById("gameSelection");
-                            let dropdowns = gameSelection.querySelectorAll(".game-dropdown");
-                        
-                            if (dropdowns.length < 3) { // Allow max 3 games
-                                let newDiv = document.createElement("div");
-                                newDiv.classList.add("form-group");
-                        
-                                let newLabel = document.createElement("label");
-                                newLabel.textContent = "Sport " + (dropdowns.length + 1) + ":";
-                        
-                                let newDropdown = dropdowns[0].cloneNode(true);
-                                newDropdown.value = "";
-                        
-                                newDiv.appendChild(newLabel);
-                                newDiv.appendChild(newDropdown);
-                        
-                                // Insert the new selection before the button
-                                gameSelection.insertBefore(newDiv, document.getElementById("addGame"));
-                            } else {
-                                alert("You can select a maximum of 3 games.");
-                            }
-                        });
-                        </script>
-                        
+                    </div>
+
+                    <!-- Include Bootstrap CSS and JS (if not already included) -->
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+                                            
                         
                         
                         <div class="form-group col-2 d-flex align-items-center" style="margin-left: 40px;">
@@ -240,53 +235,53 @@
                     </button>
                 </div>
                 <h4 class="mb-4">Corches Information Form</h4>
-        
-            <form id="studentForm">          
-                        <div class="form-group col-10">
-                            <label for="full_name">නම </label>
-                            <input type="text" id="full_name" name="full_name" required>
-                        </div>
-                 
-                        <div class="col-10">
-                            <div class="form-group">
-                                <label for="district">දිස්ත්‍රික්කය :</label>
-                                <select id="district" name="district" class="col-4">
-                                    <option value="" disabled selected>Select a district</option>
-                                    <option value="colombo">Galle</option>
-                                    <option value="galle">Matara</option>
-                                    <option value="kandy">Hambanthota</option>
-                                </select>
-                            </div>
+                
+                <div class="form-group col-10">
+                    <label for="full_name">නම </label>
+                    <input type="text" id="full_name" name="full_name" required>
+                </div>
+            
+                <div class="col-10">
+                    <div class="form-group">
+                        <label for="district">දිස්ත්‍රික්කය :</label>
+                        <select id="district" name="district" class="col-4">
+                            <option value="" disabled selected>Select a district</option>
+                            <option value="colombo">Galle</option>
+                            <option value="galle">Matara</option>
+                            <option value="kandy">Hambanthota</option>
+                        </select>
+                    </div>
 
-                        <div class="form-group">
-                                    <label for="address">ලිපිනය :</label>
-                                    <textarea id="address" name="address" rows="3" required></textarea>
-                            </div>
+                    <div class="form-group">
+                            <label for="address">ලිපිනය :</label>
+                            <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
 
-                            <div class="form-group">
-                                <label> ක්‍රීඩා අමාත්‍යංශයේ ලියාපදිංචි ද යන වග :</label>
-                                <div class="d-flex align-items-center" style="margin-left: 30%;">
-                                    <input type="radio" id="ඔව්" name="gender" value="ඔව්" class="me-1">
-                                    <label for="ඔව්" class="me-5">ඔව්</label>                            
-                                    <input type="radio" id="නැත" name="gender" value="නැත" class="me-1">
-                                    <label for="නැත">නැත</label>
-                                </div>
-                            </div>
+                    <div class="form-group">
+                        <label> ක්‍රීඩා අමාත්‍යංශයේ ලියාපදිංචි ද යන වග :</label>
+                        <div class="d-flex align-items-center" style="margin-left: 30%;">
+                            <input type="radio" id="ඔව්" name="gender" value="ඔව්" class="me-1">
+                            <label for="ඔව්" class="me-5">ඔව්</label>                            
+                            <input type="radio" id="නැත" name="gender" value="නැත" class="me-1">
+                            <label for="නැත">නැත</label>
+                        </div>
+                    </div>
 
-                            <div class="form-group col-5">
-                                <label for="nic">NIC</label>
-                                <input type="text" id="nic" name="nic" required>
-                            </div>
-                                                
-                            <div class="form-group col-5">
-                                <label for="phone">Telephone Number</label>
-                                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter phone number" required>
-                            </div>
-                        </div>
-                  
-                        <div class="form-group group mt-5">
-                            <button type="submit" class="btn custom-btn d-block mx-auto col-4">Submit</button>
-                        </div>
+                    <div class="form-group col-5">
+                        <label for="nic">NIC</label>
+                        <input type="text" id="nic" name="nic" required>
+                    </div>
+                                        
+                    <div class="form-group col-5">
+                        <label for="phone">Telephone Number</label>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter phone number" required>
+                    </div>
+                </div>
+            
+                <div class="form-group group mt-5">
+                    <button type="submit" class="btn custom-btn d-block mx-auto col-4">Submit</button>
+                </div>
+            </div>
 
         </form>
     </div>

@@ -15,7 +15,9 @@ CREATE TABLE players (
     phone VARCHAR(15),
     email VARCHAR(100),
     address TEXT,
-    district ENUM('colombo', 'galle', 'kandy'),
+    Grama_wasama TEXT,
+    Divisional TEXT,
+    district ENUM( 'galle','mathara', 'hambanthota'),
     student_photo VARCHAR(255), -- store the path to the uploaded image
     coach_id INT
 );
@@ -46,13 +48,13 @@ CREATE TABLE events (
 );
 
 -- Table for Coaches Information
-CREATE TABLE coaches_information (
+CREATE TABLE coaches (
     id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(255) NOT NULL,
     district VARCHAR(100) NOT NULL,
     address TEXT NOT NULL,
     registered VARCHAR(10) NOT NULL,
     nic VARCHAR(12) NOT NULL UNIQUE,
-    phone VARCHAR(10) NOT NULL,
-    active_status VARCHAR(10) NOT NULL
+    phone VARCHAR(10) NOT NULL
+    
 );
