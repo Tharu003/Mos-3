@@ -45,13 +45,14 @@ CREATE TABLE events (
     FOREIGN KEY (player_id) REFERENCES players(player_id)
 );
 
--- Table for Coach Information
-CREATE TABLE coach_info (
-    coach_id INT AUTO_INCREMENT PRIMARY KEY,
-    coach_name VARCHAR(255),
-    district ENUM('colombo', 'galle', 'kandy'),
-    address TEXT,
-    registered ENUM('ඔව්', 'නැත'),
-    player_id INT,
-    FOREIGN KEY (player_id) REFERENCES players(player_id)
+-- Table for Coaches Information
+CREATE TABLE coaches_information (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    district VARCHAR(100) NOT NULL,
+    address TEXT NOT NULL,
+    registered VARCHAR(10) NOT NULL,
+    nic VARCHAR(12) NOT NULL UNIQUE,
+    phone VARCHAR(10) NOT NULL,
+    active_status VARCHAR(10) NOT NULL
 );

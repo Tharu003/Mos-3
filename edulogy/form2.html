@@ -5,94 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styl.css">
-    <link rel="stylesheet" href="style3.css">
-    <title>Student Information Form</title>
+    <title>Coach Information Form</title>
     <style>
-        .progress-container {
-            margin-bottom: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
+        .form-group { margin-bottom: 15px; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h4 class="mb-4">Corches Information Form</h4>
+        <h4 class="mb-4">Coaches Information Form</h4>
         
         <form id="studentForm">
-           
-                    <div class="form-group col-10">
-                        <label for="full_name">නම </label>
-                        <input type="text" id="full_name" name="full_name" required>
-                    </div>
-
-
-
-                    <div class="row">
-                        <div class="col-8">
-                        <div class="form-group">
-                            <label for="district">දිස්ත්‍රික්කය :</label>
-                            <select id="district" name="district" class="col-4">
-                                <option value="" disabled selected>Select a district</option>
-                                <option value="colombo">Galle</option>
-                                <option value="galle">Matara</option>
-                                <option value="kandy">Hambanthota</option>
-                            </select>
-                        </div>
-
-                       <div class="form-group">
-                                <label for="address">ලිපිනය :</label>
-                                <textarea id="address" name="address" rows="3" required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label> ක්‍රීඩා අමාත්‍යංශයේ ලියාපදිංචි ද යන වග :</label>
-                            <div class="d-flex align-items-center" style="margin-left: 30%;">
-                                <input type="radio" id="ඔව්" name="gender" value="ඔව්" class="me-1">
-                                <label for="ඔව්" class="me-5">ඔව්</label>
-                            
-                                <input type="radio" id="නැත" name="gender" value="නැත" class="me-1">
-                                <label for="නැත">නැත</label>
-                            </div>
-                            
-                        </div>
-
-                        <div class="form-group col-5">
-                            <label for="nic">NIC</label>
-                            <input type="text" id="nic" name="nic" required>
-                        </div>
-                                            
-                        <div class="form-group col-7">
-                            <label for="phone">Telephone Number</label>
-                            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter phone number" required>
-                        </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label> දැනට ක්‍රීඩාවෙහි නිරත වන්නේද යන වග :</label>
-                            <div class="d-flex align-items-center" style="margin-left: 20%;">
-                                <input type="radio" id="ඔව්" name="gender" value="ඔව්" class="me-1">
-                                <label for="ඔව්" class="me-5">ඔව්</label>
-                            
-                                <input type="radio" id="නැත" name="gender" value="නැත" class="me-1">
-                                <label for="නැත">නැත</label>
-                            </div>
-                        </div>
-
-            <div class="form-group group">
-                <button type="submit" class="btn custom-btn">Submit</button>
+            <div class="form-group">
+                <label for="full_name">නම :</label>
+                <input type="text" id="full_name" name="full_name" class="form-control" required>
             </div>
+
+            <div class="form-group">
+                <label for="district">දිස්ත්‍රික්කය :</label>
+                <select id="district" name="district" class="form-control">
+                    <option value="" disabled selected>Select a district</option>
+                    <option value="Galle">Galle</option>
+                    <option value="Matara">Matara</option>
+                    <option value="Hambanthota">Hambanthota</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="address">ලිපිනය :</label>
+                <textarea id="address" name="address" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>ක්‍රීඩා අමාත්‍යංශයේ ලියාපදිංචි ද?</label>
+                <div>
+                    <input type="radio" id="registered_yes" name="registered" value="ඔව්" required>
+                    <label for="registered_yes">ඔව්</label>
+                    
+                    <input type="radio" id="registered_no" name="registered" value="නැත">
+                    <label for="registered_no">නැත</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="nic">NIC:</label>
+                <input type="text" id="nic" name="nic" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Telephone Number:</label>
+                <input type="tel" id="phone" name="phone" class="form-control" pattern="[0-9]{10}" required>
+            </div>
+
+            <div class="form-group">
+                <label>දැනට ක්‍රීඩාවෙහි නිරත වන්නේද?</label>
+                <div>
+                    <input type="radio" id="active_yes" name="active_status" value="ඔව්" required>
+                    <label for="active_yes">ඔව්</label>
+                    
+                    <input type="radio" id="active_no" name="active_status" value="නැත">
+                    <label for="active_no">නැත</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
-    <script>       
-        // Form submission handling
-        document.getElementById('studentForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Form submitted successfully!');
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#studentForm").submit(function (event) {
+                event.preventDefault();
+    
+                $.ajax({
+                    type: "POST",
+                    url: "submit_form.php",
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        Swal.fire({
+                            title: "Success!",
+                            text: response,
+                            icon: "success",
+                            confirmButtonColor: "#28a745",
+                            confirmButtonText: "OK"
+                        });
+                        $("#studentForm")[0].reset();
+                    },
+                    error: function () {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Something went wrong. Please try again.",
+                            icon: "error",
+                            confirmButtonColor: "#dc3545",
+                            confirmButtonText: "OK"
+                        });
+                    }
+                });
+            });
         });
     </script>
     
