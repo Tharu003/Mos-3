@@ -1,0 +1,57 @@
+-- Create Database
+CREATE DATABASE player_registration;
+
+-- Use the created database
+USE player_registration;
+
+-- Table for Players
+CREATE TABLE players (
+    player_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    full_name VARCHAR(255),
+    gender ENUM('male', 'female'),
+    birthday DATE,
+    nic VARCHAR(20),
+    phone VARCHAR(15),
+    email VARCHAR(100),
+    address TEXT,
+    district ENUM('colombo', 'galle', 'kandy'),
+    student_photo VARCHAR(255), -- store the path to the uploaded image
+    coach_id INT
+);
+
+-- Table for Achievements
+CREATE TABLE achievements (
+    sport_id INT AUTO_INCREMENT PRIMARY KEY,
+    player_id INT,
+    school VARCHAR(100),
+    achievement VARCHAR(255),
+    school_achievement VARCHAR(100),
+    district_achievement VARCHAR(100),
+    provincial_achievement VARCHAR(100),
+    national_achievement VARCHAR(100),
+    international_achievement VARCHAR(100),
+    club_info TEXT,
+    is_active ENUM('ඔව්', 'නැත'),
+    FOREIGN KEY (player_id) REFERENCES players(player_id) ON DELETE CASCADE
+);
+
+-- Table for Events
+CREATE TABLE events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    player_id INT,
+    event VARCHAR(255),
+    year INT,
+    FOREIGN KEY (player_id) REFERENCES players(player_id)
+);
+
+-- Table for Coach Information
+CREATE TABLE coach_info (
+    coach_id INT AUTO_INCREMENT PRIMARY KEY,
+    coach_name VARCHAR(255),
+    district ENUM('colombo', 'galle', 'kandy'),
+    address TEXT,
+    registered ENUM('ඔව්', 'නැත'),
+    player_id INT,
+    FOREIGN KEY (player_id) REFERENCES players(player_id)
+);

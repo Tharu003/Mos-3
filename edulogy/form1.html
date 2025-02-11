@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style3.css">
+
+    <title>Student Information Form</title>
+    <style>
+       
+       
+    </style>
+</head>
+<body>
+   
+
+
+    <div class="container">
+          
+        <!-- Progress Indicator -->
+        <div class="progress-container mt-3 mb-5">
+            <div class="progress-step active">Step 1</div>
+            <div class="progress-step">Step 2</div>
+            <div class="progress-step">Step 3</div>
+        </div>
+        
+        <!-- Multi-Step Form -->
+        <form id="multiStepForm">
+            <!-- Step 1 -->
+            <div class="step active">
+                <h4 class="mb-4">Student Information Form</h2>
+                <form>                                           
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div id="gameSelection">
+                            <div class="form-group">
+                                <label for="game1">Sport 1:</label>
+                                <select name="games[]" class="game-dropdown" required>
+                                    <option value="" disabled selected>Select Here</option>
+                                    <option value="event1">Event 1</option>
+                                    <option value="event2">Event 2</option>
+                                    <option value="event3">Event 3</option>
+                                </select>
+                            </div>
+                            <button type="button" id="addGame" class="btn btn-secondary mt-2">+ Add Another Game</button>
+                        </div>
+                        
+                        <script>
+                        document.getElementById("addGame").addEventListener("click", function () {
+                            let gameSelection = document.getElementById("gameSelection");
+                            let dropdowns = gameSelection.querySelectorAll(".game-dropdown");
+                        
+                            if (dropdowns.length < 3) { // Allow max 3 games
+                                let newDiv = document.createElement("div");
+                                newDiv.classList.add("form-group");
+                        
+                                let newLabel = document.createElement("label");
+                                newLabel.textContent = "Sport " + (dropdowns.length + 1) + ":";
+                        
+                                let newDropdown = dropdowns[0].cloneNode(true);
+                                newDropdown.value = "";
+                        
+                                newDiv.appendChild(newLabel);
+                                newDiv.appendChild(newDropdown);
+                        
+                                // Insert the new selection before the button
+                                gameSelection.insertBefore(newDiv, document.getElementById("addGame"));
+                            } else {
+                                alert("You can select a maximum of 3 games.");
+                            }
+                        });
+                        </script>
+                        
+                        
+                        
+                        <div class="form-group col-2 d-flex align-items-center" style="margin-left: 40px;">
+                            <select id="year" name="year" required>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex align-items-center">
+                        <div class="ms-5 me-5 col-3 mb-4 mt-4">
+                            <label for="student_photo">Upload Student Photo</label>
+                            <input type="file" id="student_photo" name="student_photo" accept="image/*" class="form-control-file">
+                        </div>
+                        <div>
+                            <img id="photo_preview" src="#" alt="Student Photo Preview" style="display: none; max-width: 200px; max-height: 200px; border: 1px solid #ccc; padding: 5px;">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-11">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Name with Initials ">
+                    </div>
+                    <div class="form-group col-11">
+                        <label for="full_name">Full Name</label>
+                        <input type="text" id="full_name" name="full_name" required>
+                    </div>
+
+                    <div class="form-group gender-options">
+                        <label>Gender:</label>
+                        <input type="radio" id="male" name="gender" value="male" required>
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6 ">
+                        <div class="form-group">
+                            <label for="district">District</label>
+                            <select id="district" name="district" required>
+                                <option value="" disabled selected>Select a district</option>
+                                <option value="colombo">Galle</option>
+                                <option value="galle">Matara</option>
+                                <option value="kandy">Hambanthota</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthday">Birthday</label>
+                            <input type="date" id="birthday" name="birthday" required>
+                        </div>
+
+                        <div class="form-group col-6">
+                            <label for="nic">NIC</label>
+                            <input type="text" id="nic" name="nic" required>
+                        </div>
+                                            
+                        <div class="form-group col-7">
+                            <label for="phone">Telephone Number</label>
+                            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter phone number" required>
+                        </div>
+                    
+                            <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>   
+                            
+                        </div>
+                        <div class="col-6 ">
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <textarea id="address" name="address" rows="3" required></textarea>
+                            </div>
+
+                            <div class="form-group col-11">
+                                <label for="email">Divisional Secretary</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>                            
+                        </div>
+                    </div>
+                 <div class="d-flex justify-content-end">
+                <button class="next-btn">   <i class="fa fa-arrow-right"></i></button>                
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+                <h4>Step 2: Additional Information</h4>
+                <div class="d-flex justify-content-center mt-5">
+                    <div class="form-group col-7 d-flex  gap-5">
+                        <label for="sport" class="mb-0">School:</label>
+                        <input type="text" id="sport" name="sport" placeholder=" Enter the school " required>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-3 mb-5">
+                    <h5 class="mb-4">ඉහලම දක්ශතාවය :</h5>    
+                    <input type="text" id="sport" class="col-4 mt-4" name="sport" placeholder="" required>
+                </div>
+
+                <h5 class="mb-4">දක්වන ලද දක්ශතාවයන් හා වසර:</h5>
+                <div class="d-flex justify-content-center ">
+                    <div class="form-group col-6 d-flex  gap-5">
+                        <label for="achievement" class="mb-0">School:</label>
+                        <input type="text" id="achievement" name="achievement" placeholder="Enter the Years " required>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center ">
+                    <div class="form-group col-6 d-flex  gap-5">
+                        <label for="achievement" class="mb-0">District:</label>
+                        <input type="text" id="achievement" name="achievement" placeholder="Enter the Years " required>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center ">
+                    <div class="form-group col-6 d-flex  gap-4">
+                        <label for="location" class="mb-0">Provincial:</label>
+                        <input type="text" id="location" name="location" placeholder="Enter the Years " required>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center ">
+                    <div class="form-group col-6 d-flex  gap-5">
+                        <label for="location" class="mb-0">National:</label>
+                        <input type="text" id="location" name="location" placeholder="Enter the Years " required>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center ">
+                    <div class="form-group col-6 d-flex  gap-3">
+                        <label for="location" class="mb-0">International:</label>
+                        <input type="text" id="location" name="location" placeholder="Enter the Years " required>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-3 mb-5">
+                    <h5 class="mb-4">ඉදිරිපත්වන ක්‍රීඩා සමාජයේ තොරතුරු :</h5>    
+                    <textarea id="sport" class="col-6 mt-4" name="sport" placeholder="උදා: නම , ලිපිනය ,ලියාපදිංචි අංකය" ></textarea>
+                </div>
+                <div class="form-group">
+                    <h5> දැනට ක්‍රීඩාවෙහි නිරත වන්නේද යන වග :</h5>
+                    <div class="d-flex align-items-center mb-5" style="margin-left: 30%;">
+                        <input type="radio" id="ඔව්" name="gender" value="ඔව්" class="me-1">
+                        <label for="ඔව්" class="me-5">ඔව්</label>                            
+                        <input type="radio" id="නැත" name="gender" value="නැත" class="me-1">
+                        <label for="නැත">නැත</label>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mt-5">
+                    <button class="prev-btn">
+                        <i class="fa fa-arrow-left"></i>
+                    </button>
+                    <button class="next-btn">
+                        <i class="fa fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="d-flex justify-content-start mt-5">
+                    <button class="prev-btn">
+                        <i class="fa fa-arrow-left"></i>
+                    </button>
+                </div>
+                <h4 class="mb-4">Corches Information Form</h4>
+        
+            <form id="studentForm">          
+                        <div class="form-group col-10">
+                            <label for="full_name">නම </label>
+                            <input type="text" id="full_name" name="full_name" required>
+                        </div>
+                 
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label for="district">දිස්ත්‍රික්කය :</label>
+                                <select id="district" name="district" class="col-4">
+                                    <option value="" disabled selected>Select a district</option>
+                                    <option value="colombo">Galle</option>
+                                    <option value="galle">Matara</option>
+                                    <option value="kandy">Hambanthota</option>
+                                </select>
+                            </div>
+
+                        <div class="form-group">
+                                    <label for="address">ලිපිනය :</label>
+                                    <textarea id="address" name="address" rows="3" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label> ක්‍රීඩා අමාත්‍යංශයේ ලියාපදිංචි ද යන වග :</label>
+                                <div class="d-flex align-items-center" style="margin-left: 30%;">
+                                    <input type="radio" id="ඔව්" name="gender" value="ඔව්" class="me-1">
+                                    <label for="ඔව්" class="me-5">ඔව්</label>                            
+                                    <input type="radio" id="නැත" name="gender" value="නැත" class="me-1">
+                                    <label for="නැත">නැත</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-5">
+                                <label for="nic">NIC</label>
+                                <input type="text" id="nic" name="nic" required>
+                            </div>
+                                                
+                            <div class="form-group col-5">
+                                <label for="phone">Telephone Number</label>
+                                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter phone number" required>
+                            </div>
+                        </div>
+                  
+                        <div class="form-group group mt-5">
+                            <button type="submit" class="btn custom-btn d-block mx-auto col-4">Submit</button>
+                        </div>
+
+        </form>
+    </div>
+
+<script>
+    // Populate the year dropdown and auto-select the current year
+    const currentYear = new Date().getFullYear();
+    const yearSelect = document.getElementById('year');
+
+    for (let year = currentYear - 50; year <= currentYear + 10; year++) {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        if (year === currentYear) {
+            option.selected = true; // Auto-select the current year
+        }
+        yearSelect.appendChild(option);
+    }
+</script>
+
+
+<script>
+    const studentPhotoInput = document.getElementById("student_photo");
+const photoPreview = document.getElementById("photo_preview");
+
+studentPhotoInput.addEventListener("change", function () {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            photoPreview.src = e.target.result;
+            photoPreview.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    } else {
+        photoPreview.style.display = "none";
+    }
+});
+
+</script>
+
+<script>
+        const steps = document.querySelectorAll('.step');
+        const progressSteps = document.querySelectorAll('.progress-step');
+        let currentStep = 0;
+
+        document.querySelectorAll('.next-btn').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                steps[currentStep].classList.remove('active');
+                progressSteps[currentStep].classList.remove('active');
+                currentStep++;
+                steps[currentStep].classList.add('active');
+                progressSteps[currentStep].classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.prev-btn').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                steps[currentStep].classList.remove('active');
+                progressSteps[currentStep].classList.remove('active');
+                currentStep--;
+                steps[currentStep].classList.add('active');
+                progressSteps[currentStep].classList.add('active');
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('multiStepForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Form submitted successfully!');
+        });
+
+
+
+</script>
+
+
+    
+</body>
+</html>
