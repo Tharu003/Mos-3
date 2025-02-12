@@ -1,36 +1,26 @@
- .step {
-            display: none;
-        }
-        .step.active {
-            display: block;
-        }
-        .progress-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .progress-step {
-            width: 25%;
-            text-align: center;
-            font-size: 14px;
-            color: #ccc;
-        }
-        .progress-step.active {
-            color: #007bff;
-        }
-        .progress-step::after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 4px;
-            background: #ccc;
-            margin-top: 5px;
-        }
-        .progress-step.active::after {
-            background: #007bff;
-        }
-           
+.form-group{
+    margin-top: 20px;
+    
+}
+/* ================= */
+.custom-btn {
+        font-size: 1.1rem; /* Increase the font size */
+        background-color: #0a96ae; /* Green color */
+        color: white; /* White text */
+        padding: 10px 20px; /* Adjust padding for button size */
+        border: none; /* Remove border */
+        cursor: pointer; /* Change cursor on hover */
+        border-radius: 30px;
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    }
 
+    /* Hover effect */
+    .custom-btn:hover {
+        background-color: #34acc7; /* Darker green on hover */
+        color: white;
+        transform: scale(1.08); /* Slightly enlarge the button */
+    }
+    
 /* Main content transition */
 .ml-250 {
     margin-left: 200px;
@@ -42,6 +32,28 @@
 
 
 
+/* -----------------------*/
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            overflow: ; 
+        }
+
+    
+    .container {
+        max-width: 100%;
+        padding: 50px;
+        padding-bottom: 0px;
+        padding-top: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+    }
+    .head{
+        color: #02a4c1;
+        margin-bottom: 15px;
+    }
     h3,h4 {
         font-family: 'Courier New', monospace;
         text-align: center;
@@ -53,8 +65,8 @@
     label {
         display: block;
         margin-bottom: 5px;
+        font-size: 18px;
         color: #555;
-        font-size: 35px;
     }
     input, select, textarea {
         width: 100%;
@@ -100,7 +112,7 @@
 .next-btn:hover {
     background-color: #0cb3d0d1;
     color: #fff;
-    transform: scale(1.2);
+    transform: scale(1.15);
 }
 
 .next-btn:active {
@@ -114,7 +126,7 @@
     
     background-color: #707373d1;
     color: #fff;
-    border: 2px solid #818080c5;
+    border: 2px solid #8e8d8dc5;
     margin-right: 5%;
     padding: 19px;
     border-radius: 50%;
@@ -130,7 +142,7 @@
 .prev-btn:hover {
    background-color: #f3f5f7;
     color: rgb(141, 143, 143);
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 .prev-btn:active {
@@ -143,8 +155,24 @@
 
 /* ----------------- */
 .step {
-    margin: 60px;
+    display: none;
 }
+
+.step.active {
+    display: block;
+}
+
+.progress-step {
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.progress-step.active {
+    font-weight: bold;
+}
+
+
 
 h5 {
     margin: 20px;
@@ -159,4 +187,44 @@ input:focus {
     outline: none;
 }
 
+ .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+        .progress-container {
+            display: flex;
+            justify-content:center;
+            margin-bottom: 20px;
+        }
+        .progress-step {
+            width: 30%;
+            margin-left: 50px;
+            margin-right: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: #ccc;
+        }
+        .progress-step.active {
+            color: #007bff;
+        }
+        .progress-step::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 4px;
+            background: #ccc;
+            margin-top: 5px;
+        }
+        .progress-step.active::after {
+            background: #007bff;
+        }
 
+
+    /* Position the button (for example, center it or move it to the left) */
+    .group {
+        display: flex;
+        justify-content: center; /* Align to the left */
+        /* You can use 'center' for centering: justify-content: center; */
+    }

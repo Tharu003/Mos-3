@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center align-items-center">
+                            <!-- Button to trigger the modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gameModal">
+                        Select Sports
+                    </button>
+
+                    <!-- Display selected sports -->
+                    <p id="selectedSportsDisplay"></p>
+
+                    <!-- Hidden input to store selected sports -->
+                    <input type="hidden" name="selected_sports" id="selectedSportsInput">
+
+                    <!-- Modal Structure -->
+                    <div class="modal fade" id="gameModal" tabindex="-1" aria-labelledby="gameModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="gameModalLabel">Select Sports</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Choose Sports:</label><br>
+                                        <input type="checkbox" class="sports-option" value="Football"> Football<br>
+                                        <input type="checkbox" class="sports-option" value="Cricket"> Cricket<br>
+                                        <input type="checkbox" class="sports-option" value="Basketball"> Basketball<br>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" id="saveSports">Save</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-2 d-flex align-items-center" style="margin-left: 40px;">
+                        <select id="year" name="year" required>
+                        </select>
+                    </div>
+                </div>
+
+
+
+
+<script>
+document.getElementById("saveSports").addEventListener("click", function () {
+    let selectedSports = [];
+    document.querySelectorAll(".sports-option:checked").forEach((checkbox) => {
+        selectedSports.push(checkbox.value);
+    });
+
+    // Store selected sports in a hidden input
+    document.getElementById("selectedSportsInput").value = selectedSports.join(",");
+    
+    // Display selected sports
+    document.getElementById("selectedSportsDisplay").innerText = "Selected: " + selectedSports.join(", ");
+
+    // Close the modal properly
+    let modalElement = document.getElementById("gameModal");
+    let modalInstance = bootstrap.Modal.getInstance(modalElement);
+    if (modalInstance) {
+        modalInstance.hide();
+    }
+});
+
+</script>
+
+<script>
+    // Populate the year dropdown and auto-select the current year
+    const currentYear = new Date().getFullYear();
+    const yearSelect = document.getElementById('year');
+
+    for (let year = currentYear - 50; year <= currentYear + 10; year++) {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        if (year === currentYear) {
+            option.selected = true; // Auto-select the current year
+        }
+        yearSelect.appendChild(option);
+    }
+</script>
+                pattern="[0-9]{10}"
