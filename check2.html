@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search UI</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #263238;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .close {
+            position: absolute;
+            color: #fff;
+            top: 20px;
+            right: 50px;
+            font-size: 1.7em;
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .close:hover {
+            font-size: 2.4em;
+            transform: rotate(360deg);
+        }
+
+        .search {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background: #03a9f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.4s linear;
+            cursor: pointer;
+        }
+
+        .search i {
+            color: white;
+            font-size: 1.8em;
+            transition: opacity 0.4s ease;
+        }
+
+        .search .input {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 370px;
+            height: 60px;
+            background: transparent;
+            border: none;
+            outline: none;
+            border-bottom: 3px solid #eee;
+            color: #eee;
+            font-size: 1.3em;
+            display: none;
+        }
+
+        .search.open {
+            height: 4000px;
+            width: 4000px;
+        }
+
+        .search.open i {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Close button -->
+        <div class="close">
+            <i class="fa fa-times"></i>
+        </div>
+  
+        <!-- Search field -->
+        <div class="search">
+            <i class="fa fa-search"></i>
+            <input type="text" class="input" placeholder="Search...">
+        </div>
+    </div>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var searchButton = $('.fa-search');
+            var closeButton = $('.close');
+            var input = $('.input');
+            var searchContainer = $('.search');
+
+            searchButton.on('click', function () {
+                searchContainer.addClass('open');
+                closeButton.fadeIn(500);
+                input.fadeIn(500);
+            });
+
+            closeButton.on('click', function () {
+                searchContainer.removeClass('open');
+                closeButton.fadeOut(500);
+                input.fadeOut(500);
+            });
+        });
+    </script>
+</body>
+</html>

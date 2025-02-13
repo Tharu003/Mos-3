@@ -60,13 +60,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Insert into events table for selected sports as a single row
         if (!empty($selected_sports)) {
-            // Directly insert the concatenated string of selected sports
             $year = date("Y");  // Set the current year as the event year
             $sql_event = "INSERT INTO events (student_id, event_names, year) VALUES ('$student_id', '$selected_sports', '$year')";
             $conn->query($sql_event);
         }
 
-        echo "Data successfully submitted!";
+        // Redirect to the toast notification page
+        header("Location: toast.php?message=Data successfully submitted!");
+        exit(); // Ensure that no further code is executed after redirection
     } else {
         echo "Error: " . $conn->error;
     }

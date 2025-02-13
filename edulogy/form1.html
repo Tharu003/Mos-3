@@ -27,7 +27,7 @@
         <!-- Multi-Step Form -->
         <form action="submit.php" method="POST" enctype="multipart/form-data">
             <!-- Step 1 -->
-            <div class="step active">
+            <div class="step active" id="step-1">
             <h4 class="head">Student Information Form</h4>                                      
                 
                 <div class="form-group d-flex align-items-center">
@@ -122,7 +122,7 @@
             </div>
 
           <!-- Step 2 -->
-            <div class="step">
+            <div class="step" id="step-2">
                 <h4 class="head">Step 2: Additional Information</h4>
 
                 <div class="d-flex justify-content-center align-items-center">
@@ -252,45 +252,46 @@
             </div>
 
            <!-- Step 3 -->
-            <div class="step">
+            <div class="step" id="step-3">
                 <div class="d-flex justify-content-start mt-5">
                     <button type="button" class="prev-btn" onclick="prevStep()">
                         <i class="fa fa-arrow-left"></i>
                     </button>
                 </div>
                 <h4 class="head">Coaches Information Form</h4>
-                
-                <div class="form-group col-10">
-                    <label for="coach_name">නම</label>
-                    <input type="text" id="coach_name" name="coach_name" >
-                </div>
+                <div style="margin-left: 10%;">
+                    <div class="col-11">    
+                        <div class="form-group">
+                            <label for="coach_name">නම</label>
+                            <input type="text" id="coach_name" name="coach_name" >
+                        </div>
 
-                <div class="col-10">
-                    <div class="form-group">
-                        <label for="coach_district">දිස්ත්‍රික්කය :</label>
-                        <select id="coach_district" name="coach_district" class="col-4" >
-                            <option value="" disabled selected>Select a district</option>
-                            <option value="galle">Galle</option>
-                            <option value="mathara">Matara</option>
-                            <option value="hambanthota">Hambanthota</option>
-                        </select>
-                    </div>
+                    
+                        <div class="form-group">
+                            <label for="coach_district">දිස්ත්‍රික්කය :</label>
+                            <select id="coach_district" name="coach_district" class="col-4" >
+                                <option value="" disabled selected>Select a district</option>
+                                <option value="galle">Galle</option>
+                                <option value="mathara">Matara</option>
+                                <option value="hambanthota">Hambanthota</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="coach_address">ලිපිනය :</label>
-                        <textarea id="coach_address" name="coach_address" rows="3"></textarea>
-                    </div>
+                        <div class="form-group">
+                            <label for="coach_address">ලිපිනය :</label>
+                            <textarea id="coach_address" name="coach_address" rows="3"></textarea>
+                        </div>
 
-                    <div class="form-group">
-                        <label> ක්‍රීඩා අමාත්‍යංශයේ ලියාපදිංචි ද යන වග :</label>
-                        <div class="d-flex align-items-center" style="margin-left: 30%;">
-                            <input type="radio" id="registered_yes" name="registered" value="ඔව්" class="me-1" >
-                            <label for="registered_yes" class="me-5">ඔව්</label>                            
-                            <input type="radio" id="registered_no" name="registered" value="නැත" class="me-1" >
-                            <label for="registered_no">නැත</label>
+                        <div class="form-group">
+                            <label> ක්‍රීඩා අමාත්‍යංශයේ ලියාපදිංචි ද යන වග :</label>
+                            <div class="d-flex align-items-center" style="margin-left: 30%;">
+                                <input type="radio" id="registered_yes" name="registered" value="ඔව්" class="me-1" >
+                                <label for="registered_yes" class="me-5">ඔව්</label>                            
+                                <input type="radio" id="registered_no" name="registered" value="නැත" class="me-1" >
+                                <label for="registered_no">නැත</label>
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
                     <div class="form-group col-5">
@@ -308,10 +309,12 @@
                     <button type="submit" class="custom-btn col-3">Submit</button>
                 </div>
             </div>
+            
         </form>
     </div>
 
 
+   
 
 <script>
 document.getElementById("saveSports").addEventListener("click", function () {
@@ -353,79 +356,113 @@ document.getElementById("saveSports").addEventListener("click", function () {
 </script>
 
 <script>
-    // Initialize variables
-    let currentStep = 0;
-    const steps = document.querySelectorAll('.step');
-    const progressSteps = document.querySelectorAll('.progress-step');
-    const submitButton = document.querySelector('.custom-btn'); // Submit button
-    const studentPhotoInput = document.getElementById("student_photo");
-    const photoPreview = document.getElementById("photo_preview");
+// Initialize variables
+let currentStep = 0;
+const steps = document.querySelectorAll('.step');
+const progressSteps = document.querySelectorAll('.progress-step');
+const submitButton = document.querySelector('.custom-btn'); // Submit button
+const studentPhotoInput = document.getElementById("student_photo");
+const photoPreview = document.getElementById("photo_preview");
 
-    // Show step function
-    function showStep(step) {
-        // Hide all steps and reset progress
-        steps.forEach((el, index) => {
-            el.classList.toggle('active', index === step);
+// Function to scroll the iframe
+function scrollToStepInIframe(step) {
+    const iframe = document.getElementById("yourIframeId"); // Use the ID of your iframe
+    const iframeDocument = iframe.contentWindow.document;
+    const stepElement = iframeDocument.querySelectorAll('.step')[step];
+    
+    // Ensure the iframe is fully loaded before trying to access its content
+    if (iframeDocument && stepElement) {
+        const topPosition = stepElement.getBoundingClientRect().top + iframe.contentWindow.pageYOffset;
+        iframe.contentWindow.scrollTo({
+            top: topPosition - 50, // Offset to scroll just above the step
+            behavior: 'smooth'
         });
+    }
+}
 
-        // Update the progress steps
-        progressSteps.forEach((el, index) => {
-            el.classList.toggle('active', index <= step); // Highlight progress steps up to current
-        });
+// Function to scroll the parent window to top
+function scrollToParentTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 
-        // Show submit button only on the 3rd step
-        if (step === 2) {
-            submitButton.style.display = 'block';
-        } else {
-            submitButton.style.display = 'none';
-        }
+// Show step function
+function showStep(step) {
+    // Hide all steps and reset progress
+    steps.forEach((el, index) => {
+        el.classList.toggle('active', index === step);
+    });
+
+    // Update the progress steps
+    progressSteps.forEach((el, index) => {
+        el.classList.toggle('active', index <= step); // Highlight progress steps up to current
+    });
+
+    // Show submit button only on the 3rd step
+    if (step === 2) {
+        submitButton.style.display = 'block';
+    } else {
+        submitButton.style.display = 'none';
     }
 
-    // Handle the 'Next' button click
-    document.querySelectorAll('.next-btn').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            if (currentStep < steps.length - 1) {
-                steps[currentStep].classList.remove('active');
-                progressSteps[currentStep].classList.remove('active');
-                currentStep++;
-                steps[currentStep].classList.add('active');
-                progressSteps[currentStep].classList.add('active');
-                showStep(currentStep); // Ensure step is updated properly
-            }
-        });
-    });
+    // Scroll the iframe or the parent page
+    if (window.location !== window.parent.location) {
+        // In iframe, scroll to step inside iframe
+        scrollToStepInIframe(step);
+    } else {
+        // If it's not inside an iframe, scroll the parent to top
+        scrollToParentTop();
+    }
+}
 
-    // Handle the 'Previous' button click
-    document.querySelectorAll('.prev-btn').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            if (currentStep > 0) {
-                steps[currentStep].classList.remove('active');
-                progressSteps[currentStep].classList.remove('active');
-                currentStep--;
-                steps[currentStep].classList.add('active');
-                progressSteps[currentStep].classList.add('active');
-                showStep(currentStep); // Ensure step is updated properly
-            }
-        });
-    });
-
-    // Photo preview for student photo input
-    studentPhotoInput.addEventListener("change", function () {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                photoPreview.src = e.target.result;
-                photoPreview.style.display = "block";
-            };
-            reader.readAsDataURL(file);
-        } else {
-            photoPreview.style.display = "none";
+// Handle the 'Next' button click
+document.querySelectorAll('.next-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        if (currentStep < steps.length - 1) {
+            steps[currentStep].classList.remove('active');
+            progressSteps[currentStep].classList.remove('active');
+            currentStep++;
+            steps[currentStep].classList.add('active');
+            progressSteps[currentStep].classList.add('active');
+            showStep(currentStep); // Ensure step is updated properly
         }
     });
+});
 
-    // Initialize by showing the first step
-    showStep(currentStep);
+// Handle the 'Previous' button click
+document.querySelectorAll('.prev-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        if (currentStep > 0) {
+            steps[currentStep].classList.remove('active');
+            progressSteps[currentStep].classList.remove('active');
+            currentStep--;
+            steps[currentStep].classList.add('active');
+            progressSteps[currentStep].classList.add('active');
+            showStep(currentStep); // Ensure step is updated properly
+        }
+    });
+});
+
+// Photo preview for student photo input
+studentPhotoInput.addEventListener("change", function () {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            photoPreview.src = e.target.result;
+            photoPreview.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    } else {
+        photoPreview.style.display = "none";
+    }
+});
+
+// Initialize by showing the first step
+showStep(currentStep);
+
 </script>
   
 </body>
