@@ -10,15 +10,61 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+     
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <link rel="stylesheet" href="style2.css">
 
-    <title>Student Information Form</title>    
+    <title>Student Information Form</title>
+    
+<style>
+        /* Home button styling */
+.home-button {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    background-color: #fdfeff;
+    color: rgb(41, 183, 205);
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid rgb(17, 161, 187);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.home-button i {
+    margin-right: 5px;
+}
+
+.home-button:hover {
+    transform: scale(1.2);
+}
+ .select2-container {
+            width: 100% !important;
+        }
+
+    </style>
+
 </head>
 <body>
       <div class="container">
-          
+           <!-- Home Button -->
+    <a href="blog-3.html" class="home-button">
+        <i class="fas fa-home"></i>
+    </a>
         <!-- Progress Indicator -->
-        <div class="progress-container mt-3 mb-5">
+        <div class="progress-container mb-5">
             <div class="progress-step active">Step 1</div>
             <div class="progress-step">Step 2</div>
             <div class="progress-step">Step 3</div>
@@ -126,71 +172,27 @@
                 <h4 class="head">Step 2: Additional Information</h4>
 
                 <div class="d-flex justify-content-center align-items-center">
-                            <!-- Button to trigger the modal -->
-                   
-    <!-- Button to trigger the modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gameModal">
-        Select Sports
-    </button>
+                    <div class="row col-4 mb-3">     
+                        <!-- Button to trigger the selection -->
+                        <button type="button" class="btn btn-primary" id="selectSportsBtn">Select Sports</button>
 
-    <!-- Display selected sports -->
-    <p id="selectedSportsDisplay"></p>
+                        <!-- Display selected sports -->
+                        <p id="selectedSportsDisplay"></p>
 
-    <!-- Hidden input to store selected sports -->
-    <input type="hidden" name="selected_sports" id="selectedSportsInput">
+                        <!-- Hidden input to store selected sports -->
+                        <input type="hidden" name="selected_sports" id="selectedSportsInput">
 
-    <!-- Modal Structure -->
-    <div class="modal fade" id="gameModal" tabindex="-1" aria-labelledby="gameModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="gameModalLabel">Select Sports</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Choose Sports:</label><br>
-                        <input type="checkbox" class="sports-option" value="Football"> Football<br>
-                        <input type="checkbox" class="sports-option" value="Cricket"> Cricket<br>
-                        <input type="checkbox" class="sports-option" value="Basketball"> Basketball<br>
+                        <!-- Searchable dropdown -->
+                        <select id="sportsDropdown" multiple="multiple" style="width: 100%; display: none;">
+                            <!-- Sports options will be dynamically loaded here -->
+                        </select>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="saveSports">Save</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-
-<script>
-    document.getElementById("saveSports").addEventListener("click", function() {
-        // Get all selected sports
-        const selectedSports = [];
-        const sportsOptions = document.querySelectorAll(".sports-option:checked");
-        
-        sportsOptions.forEach(function(option) {
-            selectedSports.push(option.value);
-        });
-
-        // Display selected sports
-        document.getElementById("selectedSportsDisplay").innerText = "Selected Sports: " + selectedSports.join(", ");
-
-        // Save selected sports to the hidden input
-        document.getElementById("selectedSportsInput").value = selectedSports.join(", ");
-
-        // Close the modal
-        $('#gameModal').modal('hide');
-    });
-</script>
-
-
-                    <div class="form-group col-2 d-flex align-items-center" style="margin-left: 40px;">
+                    <div class="form-group col-2 d-flex align-items-center" style="margin-left: 60px;">
                         <select id="year" name="year" required>
                         </select>
                     </div>
-                </div>           
+                </div>
 
                 <div class="d-flex align-items-center gap-3 mb-4">
                     <h5 class="mb-4">ඉහලම දක්ශතාවය :</h5>    
@@ -262,10 +264,13 @@
                 <div style="margin-left: 10%;">
                     <div class="col-11">    
                         <div class="form-group">
-                            <label for="coach_name">නම</label>
-                            <input type="text" id="coach_name" name="coach_name" >
+                            <label for="coach_name">Coaching Name</label>
+                            <input type="text" id="coach_name" name="coach_name" list="coach_suggestions" placeholder="Start typing coach's name...">
+                            <datalist id="coach_suggestions">
+                                <!-- Coaches will be dynamically loaded here -->
+                            </datalist>
                         </div>
-
+                      
                     
                         <div class="form-group">
                             <label for="coach_district">දිස්ත්‍රික්කය :</label>
@@ -313,8 +318,83 @@
         </form>
     </div>
 
+<script>
+        $(document).ready(function() {
+// Fetch and populate the datalist with coach names
+$.ajax({
+url: 'fetch_coaches.php', // Endpoint to get the list of coaches
+method: 'GET',
+success: function(data) {
+const coaches = JSON.parse(data);
+coaches.forEach(function(coach) {
+$('#coach_suggestions').append(`<option value="${coach.coach_name}">`);
+});
+}
+});
 
-   
+// When a coach is selected (or typed), fetch and fill in the coach details
+$('#coach_name').on('input', function() {
+const coach_name = $(this).val();
+if (coach_name) {
+$.ajax({
+url: 'fetch_coach_details.php', // Endpoint to get coach details
+method: 'GET',
+data: { coach_name: coach_name },
+success: function(data) {
+    const coach = JSON.parse(data);
+    if (coach) {
+        $('#coach_district').val(coach.coach_district);
+        $('#coach_address').val(coach.coach_address);
+        $('#coach_nic').val(coach.coach_nic);
+        $('#coach_phone').val(coach.coach_phone);
+        $('input[name="registered"][value="' + coach.registered + '"]').prop('checked', true);
+    }
+}
+});
+}
+});
+});
+
+</script> 
+
+
+<script>
+    $(document).ready(function() {
+        // Initialize Select2
+        $('#sportsDropdown').select2();
+
+        // Fetch sports from the PHP file via AJAX
+        $.ajax({
+            url: 'get_sports.php', // URL of the PHP file to fetch sports
+            method: 'GET',
+            success: function(data) {
+                const sports = JSON.parse(data); // Parse the JSON response
+                sports.forEach(function(sport) {
+                    $('#sportsDropdown').append(new Option(sport, sport));
+                });
+            },
+            error: function(error) {
+                console.error("Error fetching sports:", error);
+            }
+        });
+
+        // Show dropdown on button click
+        $('#selectSportsBtn').click(function() {
+            $('#sportsDropdown').select2('open');
+        });
+
+        // Save selected sports
+        $('#sportsDropdown').on('change', function() {
+            const selectedSports = $(this).val();
+            
+            // Display selected sports
+            $('#selectedSportsDisplay').text("Selected Sports: " + selectedSports.join(", "));
+
+            // Save selected sports to the hidden input
+            $('#selectedSportsInput').val(selectedSports.join(", "));
+        });
+    });
+</script>  
 
 <script>
 document.getElementById("saveSports").addEventListener("click", function () {

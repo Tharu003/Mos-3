@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Sports</title>
+    
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <style>
+        .select2-container {
+            width: 100% !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Button to trigger the selection -->
+    <button type="button" class="btn btn-primary" id="selectSportsBtn">Select Sports</button>
+
+    <!-- Display selected sports -->
+    <p id="selectedSportsDisplay"></p>
+
+    <!-- Hidden input to store selected sports -->
+    <input type="hidden" name="selected_sports" id="selectedSportsInput">
+
+    <!-- Searchable dropdown -->
+    <select id="sportsDropdown" multiple="multiple" style="width: 100%; display: none;">
+        <option value="Football">Football</option>
+        <option value="Cricket">Cricket</option>
+        <option value="Basketball">Basketball</option>
+        <option value="Tennis">Tennis</option>
+        <option value="Badminton">Badminton</option>
+        <option value="Rugby">Rugby</option>
+        <option value="Volleyball">Volleyball</option>
+        <option value="Hockey">Hockey</option>
+        <option value="Table Tennis">Table Tennis</option>
+        <option value="Baseball">Baseball</option>
+        <!-- Add more games as needed -->
+    </select>
+
+    <script>
+        // Initialize Select2
+        $(document).ready(function() {
+            $('#sportsDropdown').select2();
+            
+            // Show dropdown on button click
+            $('#selectSportsBtn').click(function() {
+                $('#sportsDropdown').select2('open');
+            });
+
+            // Save selected sports
+            $('#sportsDropdown').on('change', function() {
+                const selectedSports = $(this).val();
+                
+                // Display selected sports
+                $('#selectedSportsDisplay').text("Selected Sports: " + selectedSports.join(", "));
+
+                // Save selected sports to the hidden input
+                $('#selectedSportsInput').val(selectedSports.join(", "));
+            });
+        });
+    </script>
+</body>
+</html>

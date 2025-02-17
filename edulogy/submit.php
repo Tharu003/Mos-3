@@ -6,8 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $student_photo = $_FILES['student_photo']['name'];
     $name = $_POST['name'];
     $full_name = $_POST['full_name'];
-    $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
-    $district = isset($_POST['district']) ? $_POST['district'] : '';
+    $gender = $_POST['gender'] ?? '';
+    $district = $_POST['district'] ?? '';
     $birthday = $_POST['birthday'];
     $nic = $_POST['nic'];
     $phone = $_POST['phone'];
@@ -24,50 +24,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $national_achievement = $_POST['national_achievement'];
     $international_achievement = $_POST['international_achievement'];
     $club_info = $_POST['club_info'];
-    $is_active = isset($_POST['is_active']) ? $_POST['is_active'] : '';  // Default to empty string if not set
+    $is_active = $_POST['is_active'] ?? '';
 
     // Coach Info
     $coach_name = $_POST['coach_name'];
-    $coach_district = isset($_POST['coach_district']) ? $_POST['coach_district'] : '';  // Default to empty string if not set
+    $coach_district = $_POST['coach_district'] ?? '';
     $coach_address = $_POST['coach_address'];
-    $registered = isset($_POST['registered']) ? $_POST['registered'] : '';  // Default to empty string if not set
+    $registered = $_POST['registered'] ?? '';
     $coach_nic = $_POST['coach_nic'];
     $coach_phone = $_POST['coach_phone'];
 
     // Event Info (selected sports from modal)
-    $selected_sports = isset($_POST['selected_sports']) ? $_POST['selected_sports'] : '';  // Get selected sports from hidden input
-
-    // Upload the student photo to the uploads folder
+    $selected_sports = $_POST['selected_sports'] ?? '';
+    
+    // Upload student photo
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($student_photo);
     move_uploaded_file($_FILES['student_photo']['tmp_name'], $target_file);
 
-    // Insert into students table
-    $sql_student = "INSERT INTO students (student_photo, name, full_name, gender, district, birthday, nic, phone, school, email, address, grama_wasama, divisional) 
-                    VALUES ('$student_photo', '$name', '$full_name', '$gender', '$district', '$birthday', '$nic', '$phone', '$school', '$email', '$address', '$grama_wasama', '$divisional')";
-    if ($conn->query($sql_student) === TRUE) {
-        $student_id = $conn->insert_id;  // Get the last inserted student ID
+    // Get the next available student_id
+    $student_id = $conn->query("SELECT COALESCE(MAX(student_id), 0) + 1 AS next_id FROM students")->fetch_assoc()['next_id'];
 
+    // Check if coach already exists in the system
+    $coach_check = $conn->query("SELECT coach_name FROM coaches WHERE coach_name = '$coach_name'");
+    
+    if ($coach_check->num_rows == 0) {
+        // Coach does not exist, add new coach
+        $coach_id = $conn->query("SELECT COALESCE(MAX(coach_id), 0) + 1 AS next_id FROM coaches")->fetch_assoc()['next_id'];
+        $sql_coach = "INSERT INTO coaches (coach_id, coach_name, coach_district, coach_address, registered, coach_nic, coach_phone)
+                      VALUES ('$coach_id', '$coach_name', '$coach_district', '$coach_address', '$registered', '$coach_nic', '$coach_phone')";
+        $conn->query($sql_coach);
+    }
+
+    // Insert into students table with coach_name
+    $sql_student = "INSERT INTO students (student_id, student_photo, name, full_name, gender, district, birthday, nic, phone, school, email, address, grama_wasama, divisional, coach_name) 
+                    VALUES ('$student_id', '$student_photo', '$name', '$full_name', '$gender', '$district', '$birthday', '$nic', '$phone', '$school', '$email', '$address', '$grama_wasama', '$divisional', '$coach_name')";
+    
+    if ($conn->query($sql_student) === TRUE) {
         // Insert into achievements table
-        $sql_achievement = "INSERT INTO achievements (student_id, school_achievement, district_achievement, provincial_achievement, national_achievement, international_achievement, club_info, is_active)
-                            VALUES ('$student_id', '$school_achievement', '$district_achievement', '$provincial_achievement', '$national_achievement', '$international_achievement', '$club_info', '$is_active')";
+        $achievement_id = $conn->query("SELECT COALESCE(MAX(achievement_id), 0) + 1 AS next_id FROM achievements")->fetch_assoc()['next_id'];
+        $sql_achievement = "INSERT INTO achievements (achievement_id, student_id, school_achievement, district_achievement, provincial_achievement, national_achievement, international_achievement, club_info, is_active)
+                            VALUES ('$achievement_id', '$student_id', '$school_achievement', '$district_achievement', '$provincial_achievement', '$national_achievement', '$international_achievement', '$club_info', '$is_active')";
         $conn->query($sql_achievement);
 
-        // Insert into coaches table
-        $sql_coach = "INSERT INTO coaches (coach_name, coach_district, coach_address, registered, coach_nic, coach_phone)
-                      VALUES ('$coach_name', '$coach_district', '$coach_address', '$registered', '$coach_nic', '$coach_phone')";
-        $conn->query($sql_coach);
-
-        // Insert into events table for selected sports as a single row
+        // Insert into events table for selected sports
         if (!empty($selected_sports)) {
-            $year = date("Y");  // Set the current year as the event year
-            $sql_event = "INSERT INTO events (student_id, event_names, year) VALUES ('$student_id', '$selected_sports', '$year')";
+            $year = $_POST['year'];
+            $event_id = $conn->query("SELECT COALESCE(MAX(id), 0) + 1 AS next_id FROM events")->fetch_assoc()['next_id'];
+            $sql_event = "INSERT INTO events (id, student_id, event_names, year) VALUES ('$event_id', '$student_id', '$selected_sports', '$year')";
             $conn->query($sql_event);
         }
 
         // Redirect to the toast notification page
         header("Location: toast.php?message=Data successfully submitted!");
-        exit(); // Ensure that no further code is executed after redirection
+        exit();
     } else {
         echo "Error: " . $conn->error;
     }

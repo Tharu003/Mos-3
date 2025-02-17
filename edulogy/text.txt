@@ -1,60 +1,52 @@
--- Create Database
-CREATE DATABASE player_registration;
+-- Create achievements table
+CREATE TABLE achievement (
+    achievement_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    school_achievement VARCHAR(255),
+    district_achievement VARCHAR(255),
+    provincial_achievement VARCHAR(255),
+    national_achievement VARCHAR(255),
+    international_achievement VARCHAR(255),
+    club_info TEXT,
+    is_active BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
 
--- Use the created database
-USE player_registration;
+-- Create coaches table
+CREATE TABLE coaches (
+    coach_id INT AUTO_INCREMENT PRIMARY KEY,
+    coach_name VARCHAR(255),
+    coach_district VARCHAR(255),
+    coach_address TEXT,
+    registered DATE,
+    coach_nic VARCHAR(15),
+    coach_phone VARCHAR(15)
+);
 
--- Table for Players
-CREATE TABLE players (
-    player_id INT AUTO_INCREMENT PRIMARY KEY,
+-- Create events table
+CREATE TABLE events (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    event_names TEXT,
+    year YEAR,
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
+
+-- Create students table
+CREATE TABLE students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_photo VARCHAR(255),
     name VARCHAR(255),
     full_name VARCHAR(255),
-    gender ENUM('male', 'female'),
+    gender ENUM('Male', 'Female', 'Other'),
+    district VARCHAR(255),
     birthday DATE,
-    nic VARCHAR(20),
+    nic VARCHAR(15),
     phone VARCHAR(15),
-    email VARCHAR(100),
+    school VARCHAR(255),
+    email VARCHAR(255),
     address TEXT,
-    Grama_wasama TEXT,
-    Divisional TEXT,
-    district ENUM( 'galle','mathara', 'hambanthota'),
-    student_photo VARCHAR(255), -- store the path to the uploaded image
-    coach_id INT
-);
-
--- Table for Achievements
-CREATE TABLE achievements (
-    sport_id INT AUTO_INCREMENT PRIMARY KEY,
-    player_id INT,
-    school VARCHAR(100),
-    achievement VARCHAR(255),
-    school_achievement VARCHAR(100),
-    district_achievement VARCHAR(100),
-    provincial_achievement VARCHAR(100),
-    national_achievement VARCHAR(100),
-    international_achievement VARCHAR(100),
-    club_info TEXT,
-    is_active ENUM('ඔව්', 'නැත'),
-    FOREIGN KEY (player_id) REFERENCES players(player_id) ON DELETE CASCADE
-);
-
--- Table for Events
-CREATE TABLE events (
-    event_id INT AUTO_INCREMENT PRIMARY KEY,
-    player_id INT,
-    event VARCHAR(255),
-    year INT,
-    FOREIGN KEY (player_id) REFERENCES players(player_id)
-);
-
--- Table for Coaches Information
-CREATE TABLE coaches (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    full_name VARCHAR(255) NOT NULL,
-    district VARCHAR(100) NOT NULL,
-    address TEXT NOT NULL,
-    registered VARCHAR(10) NOT NULL,
-    nic VARCHAR(12) NOT NULL UNIQUE,
-    phone VARCHAR(10) NOT NULL
-    
+    grama_wasama VARCHAR(255),
+    divisional VARCHAR(255),
+    coach_name VARCHAR(255)
 );

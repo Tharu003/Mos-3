@@ -1,0 +1,207 @@
+.form-group{
+    margin-top: 20px;
+    margin-bottom: 15px;
+    
+}
+/* ================= */
+.custom-btn {
+        font-size: 1.1rem; /* Increase the font size */
+        background-color: #0a96ae; /* Green color */
+        color: white; /* White text */
+        padding: 10px 20px; /* Adjust padding for button size */
+        border: none; /* Remove border */
+        cursor: pointer; /* Change cursor on hover */
+        border-radius: 20px;
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    }
+
+    /* Hover effect */
+    .custom-btn:hover {
+        background-color: #34acc7; /* Darker green on hover */
+        color: white;
+        transform: scale(1.08); /* Slightly enlarge the button */
+    }
+    
+/* Main content transition */
+.ml-250 {
+    margin-left: 200px;
+}
+
+.transition-all {
+    transition: margin-left 0.3s ease-in-out;
+}
+
+
+
+/* -----------------------*/
+
+    .form {
+        background-color: #ffffff;
+        
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 18px;
+        color: #555;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 2px solid #dee5e781;
+        border-radius: 4px;
+        background-color: #eeeded9d;
+        font-size: 14px;
+    }
+    input[type="radio"] {
+        width: auto;
+        margin-right: 5px;
+    }
+    .gender-options {
+        display: flex;
+        align-items: center;
+    }
+    .gender-options label {
+        margin-right: 10px;
+    }
+    
+
+/* Button styles */
+.next-btn {
+    
+    background-color: #f3f5f7;
+    color: rgb(22, 180, 216);
+    border: 2px solid #0bb4d2c5;
+    margin-right: 17%;
+    padding: 19px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-btn:hover {
+    background-color: #0cb3d0d1;
+    color: #fff;
+    transform: scale(1.15);
+}
+
+.next-btn:active {
+    transform: scale(1.05);
+}
+
+.next-btn:focus {
+    box-shadow: 0 0 5px 2px rgba(0, 123, 255, 0.6);
+}
+.prev-btn {
+    
+    background-color: #707373d1;
+    color: #fff;
+    border: 2px solid #8e8d8dc5;
+    margin-right: 5%;
+    padding: 19px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev-btn:hover {
+   background-color: #f3f5f7;
+    color: rgb(141, 143, 143);
+    transform: scale(1.15);
+}
+
+.prev-btn:active {
+    transform: scale(1.05);
+}
+
+.prev-btn:focus {
+    box-shadow: 0 0 5px 2px rgba(0, 123, 255, 0.6);
+}
+
+/* ----------------- */
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+.progress-step {
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.progress-step.active {
+    font-weight: bold;
+}
+
+
+
+h5 {
+    margin: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input:focus {
+    border-color: #02a4c1;
+    outline: none;
+}
+
+ .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+        .progress-container {
+            display: flex;
+            justify-content:center;
+            margin-bottom: 20px;
+        }
+        .progress-step {
+            width: 30%;
+            margin-left: 50px;
+            margin-right: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: #ccc;
+        }
+        .progress-step.active {
+            color: #007bff;
+        }
+        .progress-step::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 4px;
+            background: #ccc;
+            margin-top: 5px;
+        }
+        .progress-step.active::after {
+            background: #007bff;
+        }
+
+
+    /* Position the button (for example, center it or move it to the left) */
+    .group {
+        display: flex;
+        justify-content: center; /* Align to the left */
+        /* You can use 'center' for centering: justify-content: center; */
+    }
