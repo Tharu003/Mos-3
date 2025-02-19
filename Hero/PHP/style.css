@@ -1,67 +1,139 @@
- body {
-        font-family: Arial, sans-serif;
-    }
-    .search-container {
-        position: relative;
-        width: 300px;
-        margin: 50px auto;
-    }
-    .search-input {
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+.profile-icon {
+    font-size: 70px;
+    color: rgba(158, 5, 224, 0.763);
+    margin-bottom: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1);
+}
+/* Moving background effect */
+.background {
+    position: absolute;
+    top: -70px; /* Moves the background up */
+    left: 0;
     width: 100%;
-    padding: 12px; /* Adjusted padding for better spacing */
-    border: 3px solid rgba(145, 145, 145, 0.735); /* Increased border thickness */
-    border-radius: 15px;
-    outline: none; /* Removed default outline for smoother appearance */
+    height: 110%; /* Slightly increased height to cover gaps */
+    background-image: url('../assets/img/bg2.jpg'); /* Replace with your image */
+    background-size: cover;
+    background-position: center top; /* Moves the image up */
+    animation: moveBackground 15s infinite alternate linear;
+    z-index: -1;
+}
+
+
+/* Background Animation */
+@keyframes moveBackground {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* Glassmorphism Search Box */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centers child elements */
+    width: 380px;
+    height: 380px;
+    padding: 35px;
+    padding-bottom: 0px;
+    background: rgba(233, 195, 233, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(158, 157, 157, 0.2);
+    text-align: center;
     transition: all 0.3s ease-in-out;
-    font-size: 16px; /* Slightly increased font size for better readability */
-    box-shadow: 0px 0px 9px rgba(112, 116, 117, 0.5); /* Subtle shadow effect */
+}
+
+
+/* Search Input */
+.search-input {
+    width: 95%;
+    padding: 12px;
+    margin-bottom: 0px;
+    border: 3px solid rgba(216, 152, 216, 0.502);
+    border-radius: 15px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.902);
+    color: #333;
+    box-shadow: 0px 0px 10px rgba(173, 143, 174, 0.5);
 }
 
 .search-input:focus {
-    border-color: #66d9ff; /* Light blue border on focus */
-    background: #ffffff; /* Light background on focus */
-    box-shadow: 0px 0px 9px rgba(100, 223, 253, 0.5); /* Subtle shadow effect */
+    border-color: #c458d969;
+    background: white;
+    box-shadow: 0px 0px 12px rgba(100, 223, 253, 0.5);
 }
 
-    .suggestions {
-        position: absolute;
-        width: 100%;
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        display: none;
-        z-index: 10;
-        padding-left: 25px;
-        padding-top: 15px;
-        animation: fadeIn 0.3s ease-in-out;
-    }
-    .suggestions div {
-        padding: 10px;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
-    .suggestions div:hover {
-        background:rgb(0, 179, 255);
-        color: white;
-    }
-    .search-btn {
-        margin-top: 40px;
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 25px;
-        background:rgb(0, 213, 255);
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-    }
-    .search-btn:hover {
-        background: rgb(2, 187, 224);
-        transform: scale(1.05);
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+/* Suggestions Box */
+.suggestions {
+    position: absolute;
+    top: 70%; /* Places it directly below the input box */
+    left: 20%; /* Aligns it to the left of the input */
+    width: auto; /* Adjusts width based on content */
+    min-width: 300px; /* Ensures enough space */
+    padding-left: 30px;
+    padding-top: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 4;
+    animation: fadeIn 0.3s ease-in-out;
+    overflow: hidden;
+    text-align: left; /* Aligns text to the left */
+}
+
+
+.suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px;
+}
+
+.suggestions div:hover {
+    background: rgba(0, 187, 255, 0.532);
+    color: white;
+}
+
+/* Search Button */
+.search-btn {
+    margin-top: 55px;
+    width: 65%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background: rgb(189, 79, 189);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px  rgba(114, 197, 206, 0.614);
+}
+
+.search-btn:hover {
+    background:  rgba(183, 35, 209, 0.763);
+    transform: scale(1.03);
+    
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
