@@ -51,6 +51,10 @@ if (isset($_GET['query'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<style>
+
+</style>
+
 </head>
 <body>
     
@@ -58,13 +62,23 @@ if (isset($_GET['query'])) {
 </html><!-- Search Form with Autocomplete & Animation -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 <link href="style.css" rel="stylesheet">
+<!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-
+<div class="background"></div> 
 <div class="search-container">
+    <!-- Bootstrap Profile Icon -->
+    <i class="bi bi-person-circle profile-icon"></i>
+
     <input type="text" id="search" class="search-input" name="search" placeholder="Enter NIC or Name" required onkeyup="fetchSuggestions(this.value)">
     <div id="suggestions" class="suggestions"></div>
     <button type="submit" class="search-btn">Search</button>
 </div>
+
+<!-- CSS to Style the Profile Icon -->
+<style>
+
+</style>
 
 <script>
 function fetchSuggestions(query) {
