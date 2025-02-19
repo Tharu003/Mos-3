@@ -31,11 +31,15 @@ if (isset($_POST['nic'])) {
         <?php if ($isEditMode): ?>
             <!-- Edit Button that redirects to edit.php with student_id as query parameter -->
             <a href="edit.php?student_id=<?php echo $student['student_id']; ?>" class="btn">Edit</a>
+
+            <!-- Manage Events Button that redirects to manage_events.php with student_id as query parameter -->
+            <a href="manage_events.php?student_id=<?php echo $student['student_id']; ?>" class="btn">Manage Events</a>
         <?php else: ?>
             <a href="<?php echo $redirectPage; ?>" class="btn">Go to Form</a>
         <?php endif; ?>
     </div>
 <?php endif; ?>
+
 
 <!-- Search Form -->
 <form method="POST" action="">

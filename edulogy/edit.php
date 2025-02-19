@@ -2,13 +2,13 @@
 session_start();
 include 'db/connection.php';
 
-// Fetch NIC from query string
-$nic = $_GET['nic'] ?? '';
+// Fetch student_id from query string
+$student_id = $_GET['student_id'] ?? '';
 
 // Fetch student details
-$sql = "SELECT * FROM students WHERE nic = ?";
+$sql = "SELECT * FROM students WHERE student_id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $nic);
+$stmt->bind_param("i", $student_id);
 $stmt->execute();
 $studentResult = $stmt->get_result();
 
@@ -71,9 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $club_info = $_POST['club_info'];
 
     // Update student details
-    $sql = "UPDATE students SET name = ?, full_name = ?, gender = ?, district = ?, birthday = ?, phone = ?, school = ?, email = ?, address = ?, grama_wasama = ?, divisional = ?, coach_name = ?, student_photo = ? WHERE nic = ?";
+    $sql = "UPDATE students SET name = ?, full_name = ?, gender = ?, district = ?, birthday = ?, phone = ?, school = ?, email = ?, address = ?, grama_wasama = ?, divisional = ?, coach_name = ?, student_photo = ? WHERE student_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssssssssss", $name, $full_name, $gender, $district, $birthday, $phone, $school, $email, $address, $grama_wasama, $divisional, $coach_name, $image_name, $nic);
+    $stmt->bind_param("sssssssssssssi", $name, $full_name, $gender, $district, $birthday, $phone, $school, $email, $address, $grama_wasama, $divisional, $coach_name, $image_name, $student_id);
     $stmt->execute();
 
     // Update achievement details
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['success_message'] = "Student details and achievements updated successfully.";
 
     // Redirect to the same page to avoid form resubmission and to clear the form data
-    header("Location: edit.php?nic=" . $nic);
+    header("Location: edit.php?student_id=" . $student_id);
     exit();
 }
 ?>
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php endif; ?>
 
 <!-- Student and Achievement Edit Form -->
-<form action="edit.php?nic=<?php echo $nic; ?>" method="POST" enctype="multipart/form-data" class="container mt-4">
+<form action="edit.php?student_id=<?php echo $student_id; ?>" method="POST" enctype="multipart/form-data" class="container mt-4">
     <!-- Student Details -->
     <div class="form-group">
         <label for="coach_name">Coach Name</label>
@@ -181,31 +181,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <!-- Achievement Details -->
-    <h3>Achievements</h3>
     <div class="form-group">
-        <label for="school_achievement">School Achievement</label>
+        <label for="school_achievement">School Achievements</label>
         <input type="text" id="school_achievement" name="school_achievement" class="form-control" value="<?php echo $achievement['school_achievement'] ?? ''; ?>" required>
     </div>
     <div class="form-group">
-        <label for="district_achievement">District Achievement</label>
+        <label for="district_achievement">District Achievements</label>
         <input type="text" id="district_achievement" name="district_achievement" class="form-control" value="<?php echo $achievement['district_achievement'] ?? ''; ?>" required>
     </div>
     <div class="form-group">
-        <label for="provincial_achievement">Provincial Achievement</label>
+        <label for="provincial_achievement">Provincial Achievements</label>
         <input type="text" id="provincial_achievement" name="provincial_achievement" class="form-control" value="<?php echo $achievement['provincial_achievement'] ?? ''; ?>" required>
     </div>
     <div class="form-group">
-        <label for="national_achievement">National Achievement</label>
+        <label for="national_achievement">National Achievements</label>
         <input type="text" id="national_achievement" name="national_achievement" class="form-control" value="<?php echo $achievement['national_achievement'] ?? ''; ?>" required>
     </div>
     <div class="form-group">
-        <label for="international_achievement">International Achievement</label>
+        <label for="international_achievement">International Achievements</label>
         <input type="text" id="international_achievement" name="international_achievement" class="form-control" value="<?php echo $achievement['international_achievement'] ?? ''; ?>" required>
     </div>
     <div class="form-group">
         <label for="club_info">Club Information</label>
-        <textarea id="club_info" name="club_info" class="form-control" required><?php echo $achievement['club_info'] ?? ''; ?></textarea>
+        <input type="text" id="club_info" name="club_info" class="form-control" value="<?php echo $achievement['club_info'] ?? ''; ?>" required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Update Details</button>
 </form>
