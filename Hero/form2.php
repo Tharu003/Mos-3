@@ -152,95 +152,101 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
         <form action="submit.php" method="POST" enctype="multipart/form-data">
             <!-- Step 1 -->
             <div class="step active" id="step-1">
-            <h4 class="head">Student Information Form</h4>                                      
+            <h4 class="head">ශිෂ්‍ය තොරතුරු ආකෘතිය</h4>                                      
                 
                 <div class="form-group d-flex align-items-center">
                     <div class="ms-5 me-5 col-3 mb-4 mt-4">
-                        <label for="student_photo">Upload Student Photo</label>
+                        <label for="student_photo">ශිෂ්‍ය ඡායාරූපය උඩුගත කරන්න</label>
                         <input type="file" id="student_photo" name="student_photo" accept="image/*">
                     </div>
                     <div>
-                        <img id="photo_preview" src="#" alt="Student Photo Preview" style="display: none; max-width: 200px; max-height: 200px; border: 1px solid #ccc; padding: 5px;">
+                        <img id="photo_preview" src="#" alt="ශිෂ්‍ය ඡායාරූප පෙරදසුන" style="display: none; max-width: 200px; max-height: 200px; border: 1px solid #ccc; padding: 5px;">
                     </div>
                 </div>
-
                 <div class="form-group col-11">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Name with Initials">
+                    <label for="name">නම</label>
+                    <input type="text" id="name" name="name" placeholder="නම සහ ආරම්භක අකුරු">
                 </div>
                 <div class="form-group col-11">
-                    <label for="full_name">Full Name</label>
-                    <input type="text" id="full_name" name="full_name" >
+                    <label for="full_name">සම්පූර්ණ නම</label>
+                    <input type="text" id="full_name" name="full_name">
                 </div>
 
                 <div class="form-group gender-options">
-                    <label>Gender:</label>
-                    <input type="radio" id="male" name="gender" value="male" >
-                    <label for="male">Male</label>
-                    <input type="radio" id="female" name="gender" value="female" >
-                    <label for="female">Female</label>
+                    <label>ස්ත්‍රී/පුරුෂ:</label>
+                    <input type="radio" id="male" name="gender" value="">
+                    <label for="male">පුරුෂ</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">ස්ත්‍රී</label>
                 </div>
 
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="district">District</label>
-                            <select id="district" name="district" >
-                                <option value="" disabled selected>Select a district</option>
-                                <option value="galle">Galle</option>
-                                <option value="mathara">Matara</option>
-                                <option value="hambanthota">Hambanthota</option>
+                            <label for="district">දිස්ත්‍රික්කය</label>
+                            <select id="district" name="district">
+                                <option value="" disabled selected>දිස්ත්‍රික්කයක් තෝරන්න</option>
+                                <option value="galle">ගාල්ල</option>
+                                <option value="mathara">මාතර</option>
+                                <option value="hambanthota">හම්බන්තොට</option>
                             </select>
                         </div>
-                
-             
-
 
                         <div class="form-group">
-                            <label for="birthday">Birthday</label>
-                            <input type="date" id="birthday" name="birthday" >
+                            <label for="birthday">උපන් දිනය</label>
+                            <input type="date" id="birthday" name="birthday">
                         </div>
 
                         <div class="form-group col-6">
                             <label for="nic">NIC</label>
-                            <input type="text" id="nic" name="nic" >
+                            <input type="text" id="nic" name="nic">
                         </div>
 
                         <div class="form-group col-7">
-                            <label for="phone">Telephone Number</label>
-                            <input type="tel" id="phone" name="phone"  placeholder="Enter phone number" >
+                            <label for="phone">දුරකථන අංකය</label>
+                            <input type="tel" id="phone" name="phone" placeholder="දුරකථන අංකය ඇතුළත් කරන්න">
                         </div>
 
-                        
-                    <div class="form-group">
-                        <label for="school" class="mb-0">School:</label>
-                        <input type="text" id="school" name="school" placeholder="Enter the school" >
-                    </div>
-               
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" >
+                            <label for="school" class="mb-0">පාසල:</label>
+                            <input type="text" id="school" name="school" placeholder="පාසල ඇතුළත් කරන්න">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">ඊමේල්</label>
+                            <input type="email" id="email" name="email">
                         </div>
                     </div>
 
-                    <div class="col-6 ">
+                    <div class="col-6">
                         <div class="form-group">
-                            <label for="address">Address</label>
-                            <textarea id="address" name="address" rows="3" ></textarea>
+                            <label for="address">ලිපිනය</label>
+                            <textarea id="address" name="address" rows="3"></textarea>
                         </div>
                         <div class="form-group col-11">
-                            <label for="Grama_wasama">Grama Niladhari wasama</label>
-                            <input type="text" id="Grama_wasama" name="Grama_wasama" >
+                            <label for="Grama_wasama">ග්‍රාම නිලධාරී වසම</label>
+                            <input type="text" id="Grama_wasama" name="Grama_wasama">
                         </div> 
 
                         <div class="form-group col-11">
-                            <label for="Divisional">Divisional Secretary</label>
-                            <input type="text" id="Divisional" name="Divisional" >
+                            <label for="Divisional">දිස්තර සභාපති</label>
+                            <input type="text" id="Divisional" name="Divisional">
+                        </div>  
+                        <div class="form-group col-11">
+                            <label for="job_details">රැකියා තොරතුරු</label>
+                            <textarea id="job_details" name="job_details"></textarea>
                         </div>                            
                     </div>
+                </div>                          
+                   
+                
+
+                <div class="form-group">
+                    <label for="additional_info">අමතර තොරතුරු (අවශ්‍ය නම්):</label>
+                    <textarea id="additional_info" name="additional_info" rows="3" placeholder="අමතර තොරතුරු ඇතුළත් කරන්න"></textarea>
                 </div>
 
-                 <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end">
                     <button type="button" class="next-btn" onclick="nextStep()"> <i class="fa fa-arrow-right"></i></button>
                 </div>
             </div>
@@ -273,126 +279,122 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                 </div>
 
                 <div class="d-flex align-items-center gap-3 mb-4">
-                    <h5 class="mb-4">ඉහලම දක්ශතාවය :</h5>    
-                    <input type="text" id="achievement" class="col-4 mt-4" name="achievement" placeholder="" >
-                </div>
+        <h5 class="mb-4">ඉහළම දක්ෂතාවය:</h5>    
+        <input type="text" id="achievement" class="col-4 mt-4" name="achievement" placeholder="" >
+    </div>
 
-                <h5 class="mb-4">දක්වන ලද දක්ශතාවයන් හා වසර:</h5>
-                <div class="d-flex justify-content-center ">
-                    <div class="form-group col-6 d-flex  gap-5">
-                        <label for="school_achievement" class="mb-0">School:</label>
-                        <input type="text" id="school_achievement" name="school_achievement" placeholder="Enter the Years" >
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center ">
-                    <div class="form-group col-6 d-flex  gap-5">
-                        <label for="district_achievement" class="mb-0">District:</label>
-                        <input type="text" id="district_achievement" name="district_achievement" placeholder="Enter the Years" >
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center ">
-                    <div class="form-group col-6 d-flex  gap-4">
-                        <label for="provincial_achievement" class="mb-0">Provincial:</label>
-                        <input type="text" id="provincial_achievement" name="provincial_achievement" placeholder="Enter the Years" >
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center ">
-                    <div class="form-group col-6 d-flex  gap-5">
-                        <label for="national_achievement" class="mb-0">National:</label>
-                        <input type="text" id="national_achievement" name="national_achievement" placeholder="Enter the Years" >
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center ">
-                    <div class="form-group col-6 d-flex  gap-3">
-                        <label for="international_achievement" class="mb-0">International:</label>
-                        <input type="text" id="international_achievement" name="international_achievement" placeholder="Enter the Years" >
-                    </div>
-                </div>
-                <div class="d-flex align-items-center gap-3 mb-5">
-                    <h5 class="mb-4">ඉදිරිපත්වන ක්‍රීඩා සමාජයේ තොරතුරු :</h5>    
-                    <textarea id="club_info" class="col-6 mt-4" name="club_info" placeholder="උදා: නම , ලිපිනය ,ලියාපදිංචි අංකය"></textarea>
-                </div>
-                <div class="form-group">
-                    <h5> දැනට ක්‍රීඩාවෙහි නිරත වන්නේද යන වග :</h5>
-                    <div class="d-flex align-items-center mb-5" style="margin-left: 30%;">
-                        <input type="radio" id="is_active_1" name="is_active" value="ඔව්" class="me-1" >
-                        <label for="is_active_1" class="me-5">ඔව්</label>                            
-                        <input type="radio" id="is_active_2" name="is_active" value="නැත" class="me-1" >
-                        <label for="is_active_2">නැත</label>
-                    </div>
-                </div>
+    <h5 class="mb-4">දක්වන ලද දක්ෂතාවයන් සහ වසර:</h5>
+    <div class="d-flex justify-content-center ">
+        <div class="form-group col-6 d-flex  gap-5">
+            <label for="school_achievement" class="mb-0">පාසල:</label>
+            <input type="text" id="school_achievement" name="school_achievement" placeholder="වසර ඇතුළත් කරන්න" >
+        </div>
+    </div>
+    <div class="d-flex justify-content-center ">
+        <div class="form-group col-6 d-flex  gap-5">
+            <label for="district_achievement" class="mb-0">දිස්ත්‍රික්කය:</label>
+            <input type="text" id="district_achievement" name="district_achievement" placeholder="වසර ඇතුළත් කරන්න" >
+        </div>
+    </div>
+    <div class="d-flex justify-content-center ">
+        <div class="form-group col-6 d-flex  gap-4">
+            <label for="provincial_achievement" class="mb-0">පළාත්:</label>
+            <input type="text" id="provincial_achievement" name="provincial_achievement" placeholder="වසර ඇතුළත් කරන්න" >
+        </div>
+    </div>
+    <div class="d-flex justify-content-center ">
+        <div class="form-group col-6 d-flex  gap-5">
+            <label for="national_achievement" class="mb-0">ජාතික:</label>
+            <input type="text" id="national_achievement" name="national_achievement" placeholder="වසර ඇතුළත් කරන්න" >
+        </div>
+    </div>
+    <div class="d-flex justify-content-center ">
+        <div class="form-group col-6 d-flex  gap-3">
+            <label for="international_achievement" class="mb-0">අන්තර්ජාතික:</label>
+            <input type="text" id="international_achievement" name="international_achievement" placeholder="වසර ඇතුළත් කරන්න" >
+        </div>
+    </div>
+    <div class="d-flex align-items-center gap-3 mb-5">
+        <h5 class="mb-4">ඉදිරිපත්වන ක්‍රීඩා සමාජය පිළිබඳ තොරතුරු:</h5>    
+        <textarea id="club_info" class="col-6 mt-4" name="club_info" placeholder="උදා: නම, ලිපිනය, ලියාපදිංචි අංකය"></textarea>
+    </div>
+    <div class="form-group">
+        <h5>දැනට ක්‍රීඩාවෙහි නිරත වන්නේද?</h5>
+        <div class="d-flex align-items-center mb-5" style="margin-left: 30%;">
+            <input type="radio" id="is_active_1" name="is_active" value="ඔව්" class="me-1" >
+            <label for="is_active_1" class="me-5">ඔව්</label>                            
+            <input type="radio" id="is_active_2" name="is_active" value="නැත" class="me-1" >
+            <label for="is_active_2">නැත</label>
+        </div>
+    </div>
 
-                <div class="d-flex justify-content-end mt-5">
-                    <button type="button" class="prev-btn" onclick="prevStep()">
-                        <i class="fa fa-arrow-left"></i>
-                    </button>
-                    <button type="button" class="next-btn" onclick="nextStep()"> <i class="fa fa-arrow-right"></i></button>
-                </div>
-
-            </div>
-
+    <div class="d-flex justify-content-end mt-5">
+        <button type="button" class="prev-btn" onclick="prevStep()">
+            <i class="fa fa-arrow-left"></i>
+        </button>
+        <button type="button" class="next-btn" onclick="nextStep()"> <i class="fa fa-arrow-right"></i></button>
+    </div>
+</div>
            <!-- Step 3 -->
-            <div class="step" id="step-3">
-                <div class="d-flex justify-content-start mt-5">
-                    <button type="button" class="prev-btn" onclick="prevStep()">
-                        <i class="fa fa-arrow-left"></i>
-                    </button>
-                </div>
-                <h4 class="head">Coaches Information Form</h4>
-                <div style="margin-left: 10%;">
-                    <div class="col-11">    
-                        <div class="form-group">
-                            <label for="coach_name">Coaching Name</label>
-                            <input type="text" id="coach_name" name="coach_name" list="coach_suggestions" placeholder="Start typing coach's name...">
-                            <datalist id="coach_suggestions">
-                                <!-- Coaches will be dynamically loaded here -->
-                            </datalist>
-                        </div>
-                      
-                    
-                        <div class="form-group">
-                            <label for="coach_district">දිස්ත්‍රික්කය :</label>
-                            <select id="coach_district" name="coach_district" class="col-4" >
-                                <option value="" disabled selected>Select a district</option>
-                                <option value="galle">Galle</option>
-                                <option value="mathara">Matara</option>
-                                <option value="hambanthota">Hambanthota</option>
-                            </select>
-                        </div>
+           <div class="step" id="step-3">
+    <div class="d-flex justify-content-start mt-5">
+        <button type="button" class="prev-btn" onclick="prevStep()">
+            <i class="fa fa-arrow-left"></i>
+        </button>
+    </div>
+    <h4 class="head">පුහුණුකරුවන්ගේ තොරතුරු පෝරමය</h4>
+    <div style="margin-left: 10%;">
+        <div class="col-11">    
+            <div class="form-group">
+                <label for="coach_name">පුහුණුකරුගේ නම</label>
+                <input type="text" id="coach_name" name="coach_name" list="coach_suggestions" placeholder="පුහුණුකරුගේ නම ටයිප් කිරීම අරඹන්න...">
+                <datalist id="coach_suggestions">
+                    <!-- පුහුණුකරුවන් මෙතැනට ප්‍රවේශ කරනු ඇත -->
+                </datalist>
+            </div>
 
-                        <div class="form-group">
-                            <label for="coach_address">ලිපිනය :</label>
-                            <textarea id="coach_address" name="coach_address" rows="3"></textarea>
-                        </div>
+            <div class="form-group">
+                <label for="coach_district">දිස්ත්‍රික්කය :</label>
+                <select id="coach_district" name="coach_district" class="col-4">
+                    <option value="" disabled selected>දිස්ත්‍රික්කය තෝරන්න</option>
+                    <option value="galle">ගාල්ල</option>
+                    <option value="mathara">මාතර</option>
+                    <option value="hambanthota">හම්බන්තොට</option>
+                </select>
+            </div>
 
-                        <div class="form-group">
-                            <label> ක්‍රීඩා අමාත්‍යංශයේ ලියාපදිංචි ද යන වග :</label>
-                            <div class="d-flex align-items-center" style="margin-left: 30%;">
-                                <input type="radio" id="registered_yes" name="registered" value="ඔව්" class="me-1" >
-                                <label for="registered_yes" class="me-5">ඔව්</label>                            
-                                <input type="radio" id="registered_no" name="registered" value="නැත" class="me-1" >
-                                <label for="registered_no">නැත</label>
-                            </div>
-                        </div>
-                    </div>
+            <div class="form-group">
+                <label for="coach_address">ලිපිනය :</label>
+                <textarea id="coach_address" name="coach_address" rows="3"></textarea>
+            </div>
 
-
-                    <div class="form-group col-5">
-                        <label for="coach_nic">NIC</label>
-                        <input type="text" id="coach_nic" name="coach_nic" >
-                    </div>
-                                                
-                    <div class="form-group col-5">
-                        <label for="coach_phone">Telephone Number</label>
-                        <input type="tel" id="coach_phone" name="coach_phone"  placeholder="Enter phone number" >
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-center mt-5">
-                    <button type="submit" class="custom-btn col-3">Submit</button>
+            <div class="form-group">
+                <label>ක්‍රීඩා අමාත්‍යංශයේ ලියාපදිංචි වී ඇත්ද?</label>
+                <div class="d-flex align-items-center" style="margin-left: 30%;">
+                    <input type="radio" id="registered_yes" name="registered" value="ඔව්" class="me-1">
+                    <label for="registered_yes" class="me-5">ඔව්</label>                            
+                    <input type="radio" id="registered_no" name="registered" value="නැත" class="me-1">
+                    <label for="registered_no">නැත</label>
                 </div>
             </div>
-            
+        </div>
+
+        <div class="form-group col-5">
+            <label for="coach_nic">ජාතික හැඳුනුම්පත් අංකය (NIC)</label>
+            <input type="text" id="coach_nic" name="coach_nic">
+        </div>
+                                            
+        <div class="form-group col-5">
+            <label for="coach_phone">දුරකථන අංකය</label>
+            <input type="tel" id="coach_phone" name="coach_phone" placeholder="දුරකථන අංකය ඇතුළත් කරන්න">
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+        <button type="submit" class="custom-btn col-3">ඇතුළත් කරන්න</button>
+    </div>
+</div>
+
         </form>
   </div>
 </div>

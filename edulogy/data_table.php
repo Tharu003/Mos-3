@@ -139,14 +139,15 @@
     <table id="dataTable" class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>District</th>
-                <th>Address</th>
-                <th>Registered</th>
-                <th>NIC</th>
-                <th>Phone</th>
-                <th>Active Status</th>
+            <th>ID</th>
+            <th>නම</th>
+            <th>දිස්ත්‍රික්කය</th>
+            <th>ලිපිනය</th>
+            <th>ලියාපදිංචි වීම</th>
+            <th>ජාතික හැඳුනුම්පත අංකය</th>
+            <th>දුරකථන අංකය</th>
+            <th>සක්‍රිය තත්ත්වය</th>
+
             </tr>
         </thead>
         <tbody>

@@ -1,233 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si"> <!-- Changed to Sinhala language -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
-    <!-- Include Bootstrap CSS and JS (if not already included) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-     
-    <!-- Select2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
-    
-    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <!-- Select2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
     <link rel="stylesheet" href="style2.css">
+    <title>ශිෂ්‍ය තොරතුරු ආකෘතිය</title> <!-- Translated title -->
 
-    <title>Student Information Form</title>
-    
-<style>
+    <style>
         /* Home button styling */
-.home-button {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    background-color: #fdfeff;
-    color: rgb(41, 183, 205);
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: 2px solid rgb(17, 161, 187);
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.home-button i {
-    margin-right: 5px;
-}
-
-.home-button:hover {
-    transform: scale(1.2);
-}
- .select2-container {
-            width: 100% !important;
+        .home-button {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            background-color: #fdfeff;
+            color: rgb(41, 183, 205);
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 2px solid rgb(17, 161, 187);
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-    </style>
+        .home-button i {
+            margin-right: 5px;
+        }
 
+        .home-button:hover {
+            transform: scale(1.2);
+        }
+
+        .select2-container {
+            width: 100% !important;
+        }
+    </style>
 </head>
 <body>
-      <div class="container">
-           <!-- Home Button -->
-    <a href="blog-3.html" class="home-button">
-        <i class="fas fa-home"></i>
-    </a>
+    <div class="container">
+        <!-- Home Button -->
+        <a href="blog-3.html" class="home-button">
+            <i class="fas fa-home"></i>
+        </a>
+        
         <!-- Progress Indicator -->
         <div class="progress-container mb-5">
-            <div class="progress-step active">Step 1</div>
-            <div class="progress-step">Step 2</div>
-            <div class="progress-step">Step 3</div>
+            <div class="progress-step active">පියවර 1</div>
+            <div class="progress-step">පියවර 2</div>
+            <div class="progress-step">පියවර 3</div>
         </div>
         
         <!-- Multi-Step Form -->
         <form action="submit.php" method="POST" enctype="multipart/form-data">
             <!-- Step 1 -->
             <div class="step active" id="step-1">
-            <h4 class="head">Student Information Form</h4>                                      
+                <h4 class="head">ශිෂ්‍ය තොරතුරු ආකෘතිය</h4>                                      
                 
                 <div class="form-group d-flex align-items-center">
                     <div class="ms-5 me-5 col-3 mb-4 mt-4">
-                        <label for="student_photo">Upload Student Photo</label>
+                        <label for="student_photo">ශිෂ්‍ය ඡායාරූපය උඩුගත කරන්න</label>
                         <input type="file" id="student_photo" name="student_photo" accept="image/*">
                     </div>
                     <div>
-                        <img id="photo_preview" src="#" alt="Student Photo Preview" style="display: none; max-width: 200px; max-height: 200px; border: 1px solid #ccc; padding: 5px;">
+                        <img id="photo_preview" src="#" alt="ශිෂ්‍ය ඡායාරූප පෙරදසුන" style="display: none; max-width: 200px; max-height: 200px; border: 1px solid #ccc; padding: 5px;">
                     </div>
                 </div>
 
                 <div class="form-group col-11">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Name with Initials">
+                    <label for="name">නම</label>
+                    <input type="text" id="name" name="name" placeholder="නම සහ ආරම්භක අකුරු">
                 </div>
                 <div class="form-group col-11">
-                    <label for="full_name">Full Name</label>
-                    <input type="text" id="full_name" name="full_name" >
+                    <label for="full_name">සම්පූර්ණ නම</label>
+                    <input type="text" id="full_name" name="full_name">
                 </div>
 
                 <div class="form-group gender-options">
-                    <label>Gender:</label>
-                    <input type="radio" id="male" name="gender" value="male" >
-                    <label for="male">Male</label>
-                    <input type="radio" id="female" name="gender" value="female" >
-                    <label for="female">Female</label>
+                    <label>ස්ත්‍රී/පුරුෂ:</label>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">පුරුෂ</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">ස්ත්‍රී</label>
                 </div>
 
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="district">District</label>
-                            <select id="district" name="district" >
-                                <option value="" disabled selected>Select a district</option>
-                                <option value="galle">Galle</option>
-                                <option value="mathara">Matara</option>
-                                <option value="hambanthota">Hambanthota</option>
+                            <label for="district">දිස්ත්‍රික්කය</label>
+                            <select id="district" name="district">
+                                <option value="" disabled selected>දිස්ත්‍රික්කයක් තෝරන්න</option>
+                                <option value="galle">ගාල්ල</option>
+                                <option value="mathara">මාතර</option>
+                                <option value="hambanthota">හම්බන්තොට</option>
                             </select>
                         </div>
-                
-             
-
 
                         <div class="form-group">
-                            <label for="birthday">Birthday</label>
-                            <input type="date" id="birthday" name="birthday" >
+                            <label for="birthday">උපන් දිනය</label>
+                            <input type="date" id="birthday" name="birthday">
                         </div>
 
                         <div class="form-group col-6">
                             <label for="nic">NIC</label>
-                            <input type="text" id="nic" name="nic" >
+                            <input type="text" id="nic" name="nic">
                         </div>
 
                         <div class="form-group col-7">
-                            <label for="phone">Telephone Number</label>
-                            <input type="tel" id="phone" name="phone"  placeholder="Enter phone number" >
+                            <label for="phone">දුරකථන අංකය</label>
+                            <input type="tel" id="phone" name="phone" placeholder="දුරකථන අංකය ඇතුළත් කරන්න">
                         </div>
 
-                        
-                    <div class="form-group">
-                        <label for="school" class="mb-0">School:</label>
-                        <input type="text" id="school" name="school" placeholder="Enter the school" >
-                    </div>
-               
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" >
+                            <label for="school" class="mb-0">පාසල:</label>
+                            <input type="text" id="school" name="school" placeholder="පාසල ඇතුළත් කරන්න">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">ඊමේල්</label>
+                            <input type="email" id="email" name="email">
                         </div>
                     </div>
 
-                    <div class="col-6 ">
+                    <div class="col-6">
                         <div class="form-group">
-                            <label for="address">Address</label>
-                            <textarea id="address" name="address" rows="3" ></textarea>
+                            <label for="address">ලිපිනය</label>
+                            <textarea id="address" name="address" rows="3"></textarea>
                         </div>
                         <div class="form-group col-11">
-                            <label for="Grama_wasama">Grama Niladhari wasama</label>
-                            <input type="text" id="Grama_wasama" name="Grama_wasama" >
+                            <label for="Grama_wasama">ග්‍රාම නිලධාරී වසම</label>
+                            <input type="text" id="Grama_wasama" name="Grama_wasama">
                         </div> 
 
                         <div class="form-group col-11">
-                            <label for="Divisional">Divisional Secretary</label>
-                            <input type="text" id="Divisional" name="Divisional" >
+                            <label for="Divisional">දිස්තර සභාපති</label>
+                            <input type="text" id="Divisional" name="Divisional">
                         </div>                            
                     </div>
                 </div>
 
-                 <div class="d-flex justify-content-end">
+                <div class="form-group">
+                    <label for="additional_info">අමතර තොරතුරු (අවශ්‍ය නම්):</label>
+                    <textarea id="additional_info" name="additional_info" rows="3" placeholder="අමතර තොරතුරු ඇතුළත් කරන්න"></textarea>
+                </div>
+
+                <div class="d-flex justify-content-end">
                     <button type="button" class="next-btn" onclick="nextStep()"> <i class="fa fa-arrow-right"></i></button>
                 </div>
             </div>
 
-          <!-- Step 2 -->
+            <!-- Step 2 -->
             <div class="step" id="step-2">
-                <h4 class="head">Step 2: Additional Information</h4>
+                <h4 class="head">පියවර 2: අමතර තොරතුරු</h4>
 
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="row col-4 mb-3">     
-                        <!-- Button to trigger the selection -->
-                        <button type="button" class="btn btn-primary" id="selectSportsBtn">Select Sports</button>
-
-                        <!-- Display selected sports -->
+                        <button type="button" class="btn btn-primary" id="selectSportsBtn">ක්‍රීඩා තෝරන්න</button>
                         <p id="selectedSportsDisplay"></p>
-
-                        <!-- Hidden input to store selected sports -->
                         <input type="hidden" name="selected_sports" id="selectedSportsInput">
-
-                        <!-- Searchable dropdown -->
-                        <select id="sportsDropdown" multiple="multiple" style="width: 100%; display: none;">
-                            <!-- Sports options will be dynamically loaded here -->
-                        </select>
+                        <select id="sportsDropdown" multiple="multiple" style="width: 100%; display: none;"></select>
                     </div>
 
                     <div class="form-group col-2 d-flex align-items-center" style="margin-left: 60px;">
-                        <select id="year" name="year" required>
-                        </select>
+                        <select id="year" name="year" required></select>
                     </div>
                 </div>
 
                 <div class="d-flex align-items-center gap-3 mb-4">
                     <h5 class="mb-4">ඉහලම දක්ශතාවය :</h5>    
-                    <input type="text" id="achievement" class="col-4 mt-4" name="achievement" placeholder="" >
+                    <input type="text" id="achievement" class="col-4 mt-4" name="achievement" placeholder="">
                 </div>
 
                 <h5 class="mb-4">දක්වන ලද දක්ශතාවයන් හා වසර:</h5>
                 <div class="d-flex justify-content-center ">
-                    <div class="form-group col-6 d-flex  gap-5">
-                        <label for="school_achievement" class="mb-0">School:</label>
-                        <input type="text" id="school_achievement" name="school_achievement" placeholder="Enter the Years" >
+                    <div class="form-group col-6 d-flex gap-5">
+                        <label for="school_achievement" class="mb-0">පාසල:</label>
+                        <input type="text" id="school_achievement" name="school_achievement" placeholder="වසර ඇතුළත් කරන්න">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center ">
-                    <div class="form-group col-6 d-flex  gap-5">
-                        <label for="district_achievement" class="mb-0">District:</label>
-                        <input type="text" id="district_achievement" name="district_achievement" placeholder="Enter the Years" >
+                    <div class="form-group col-6 d-flex gap-5">
+                        <label for="district_achievement" class="mb-0">දිස්ත්‍රික්කය:</label>
+                        <input type="text" id="district_achievement" name="district_achievement" placeholder="වසර ඇතුළත් කරන්න">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center ">
-                    <div class="form-group col-6 d-flex  gap-4">
-                        <label for="provincial_achievement" class="mb-0">Provincial:</label>
-                        <input type="text" id="provincial_achievement" name="provincial_achievement" placeholder="Enter the Years" >
+                    <div class="form-group col-6 d-flex gap-4">
+                        <label for="provincial_achievement" class="mb-0">ප‍්‍රාන්තීය:</label>
+                        <input type="text" id="provincial_achievement" name="provincial_achievement" placeholder="වසර ඇතුළත් කරන්න">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center ">
-                    <div class="form-group col-6 d-flex  gap-5">
-                        <label for="national_achievement" class="mb-0">National:</label>
-                        <input type="text" id="national_achievement" name="national_achievement" placeholder="Enter the Years" >
+                    <div class="form-group col-6 d-flex gap-5">
+                        <label for="national_achievement" class="mb-0">ජාතික:</label>
+                        <input type="text" id="national_achievement" name="national_achievement" placeholder="වසර ඇතුළත් කරන්න">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center ">
-                    <div class="form-group col-6 d-flex  gap-3">
-                        <label for="international_achievement" class="mb-0">International:</label>
-                        <input type="text" id="international_achievement" name="international_achievement" placeholder="Enter the Years" >
+                    <div class="form-group col-6 d-flex gap-3">
+                        <label for="international_achievement" class="mb-0">අන්තර්ජාතික:</label>
+                        <input type="text" id="international_achievement" name="international_achievement" placeholder="වසර ඇතුළත් කරන්න">
                     </div>
                 </div>
                 <div class="d-flex align-items-center gap-3 mb-5">
@@ -235,11 +215,11 @@
                     <textarea id="club_info" class="col-6 mt-4" name="club_info" placeholder="උදා: නම , ලිපිනය ,ලියාපදිංචි අංකය"></textarea>
                 </div>
                 <div class="form-group">
-                    <h5> දැනට ක්‍රීඩාවෙහි නිරත වන්නේද යන වග :</h5>
+                    <h5>දැනට ක්‍රීඩාවෙහි නිරත වන්නේද යන වග :</h5>
                     <div class="d-flex align-items-center mb-5" style="margin-left: 30%;">
-                        <input type="radio" id="is_active_1" name="is_active" value="ඔව්" class="me-1" >
+                        <input type="radio" id="is_active_1" name="is_active" value="ඔව්" class="me-1">
                         <label for="is_active_1" class="me-5">ඔව්</label>                            
-                        <input type="radio" id="is_active_2" name="is_active" value="නැත" class="me-1" >
+                        <input type="radio" id="is_active_2" name="is_active" value="නැත" class="me-1">
                         <label for="is_active_2">නැත</label>
                     </div>
                 </div>
@@ -253,32 +233,29 @@
 
             </div>
 
-           <!-- Step 3 -->
+            <!-- Step 3 -->
             <div class="step" id="step-3">
                 <div class="d-flex justify-content-start mt-5">
                     <button type="button" class="prev-btn" onclick="prevStep()">
                         <i class="fa fa-arrow-left"></i>
                     </button>
                 </div>
-                <h4 class="head">Coaches Information Form</h4>
+                <h4 class="head">කෝචිං තොරතුරු ආකෘතිය</h4>
                 <div style="margin-left: 10%;">
                     <div class="col-11">    
                         <div class="form-group">
-                            <label for="coach_name">Coaching Name</label>
-                            <input type="text" id="coach_name" name="coach_name" list="coach_suggestions" placeholder="Start typing coach's name...">
-                            <datalist id="coach_suggestions">
-                                <!-- Coaches will be dynamically loaded here -->
-                            </datalist>
+                            <label for="coach_name">කෝච්චිගේ නම</label>
+                            <input type="text" id="coach_name" name="coach_name" list="coach_suggestions" placeholder="කෝච්චිගේ නම ඇතුළත් කරන්න...">
+                            <datalist id="coach_suggestions"></datalist>
                         </div>
                       
-                    
                         <div class="form-group">
                             <label for="coach_district">දිස්ත්‍රික්කය :</label>
-                            <select id="coach_district" name="coach_district" class="col-4" >
-                                <option value="" disabled selected>Select a district</option>
-                                <option value="galle">Galle</option>
-                                <option value="mathara">Matara</option>
-                                <option value="hambanthota">Hambanthota</option>
+                            <select id="coach_district" name="coach_district" class="col-4">
+                                <option value="" disabled selected>දිස්ත්‍රික්කයක් තෝරන්න</option>
+                                <option value="galle">ගාල්ල</option>
+                                <option value="mathara">මාතර</option>
+                                <option value="hambanthota">හම්බන්තොට</option>
                             </select>
                         </div>
 
@@ -288,262 +265,105 @@
                         </div>
 
                         <div class="form-group">
-                            <label> ක්‍රීඩා අමාත්‍යංශයේ ලියාපදිංචි ද යන වග :</label>
+                            <label>ක්‍රීඩා අමාත්‍යංශයේ ලියාපදිංචි ද යන වග :</label>
                             <div class="d-flex align-items-center" style="margin-left: 30%;">
-                                <input type="radio" id="registered_yes" name="registered" value="ඔව්" class="me-1" >
+                                <input type="radio" id="registered_yes" name="registered" value="ඔව්" class="me-1">
                                 <label for="registered_yes" class="me-5">ඔව්</label>                            
-                                <input type="radio" id="registered_no" name="registered" value="නැත" class="me-1" >
+                                <input type="radio" id="registered_no" name="registered" value="නැත" class="me-1">
                                 <label for="registered_no">නැත</label>
                             </div>
                         </div>
                     </div>
 
-
                     <div class="form-group col-5">
                         <label for="coach_nic">NIC</label>
-                        <input type="text" id="coach_nic" name="coach_nic" >
+                        <input type="text" id="coach_nic" name="coach_nic">
                     </div>
                                                 
                     <div class="form-group col-5">
-                        <label for="coach_phone">Telephone Number</label>
-                        <input type="tel" id="coach_phone" name="coach_phone"  placeholder="Enter phone number" >
+                        <label for="coach_phone">දුරකථන අංකය</label>
+                        <input type="tel" id="coach_phone" name="coach_phone" placeholder="දුරකථන අංකය ඇතුළත් කරන්න">
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-center mt-5">
-                    <button type="submit" class="custom-btn col-3">Submit</button>
+                    <button type="submit" class="custom-btn col-3">ඉදිරිපත් කරන්න</button>
                 </div>
             </div>
-            
         </form>
     </div>
 
-<script>
+    <script>
         $(document).ready(function() {
-// Fetch and populate the datalist with coach names
-$.ajax({
-url: 'fetch_coaches.php', // Endpoint to get the list of coaches
-method: 'GET',
-success: function(data) {
-const coaches = JSON.parse(data);
-coaches.forEach(function(coach) {
-$('#coach_suggestions').append(`<option value="${coach.coach_name}">`);
-});
-}
-});
+            // Fetch and populate the datalist with coach names
+            $.ajax({
+                url: 'fetch_coaches.php',
+                method: 'GET',
+                success: function(data) {
+                    const coaches = JSON.parse(data);
+                    coaches.forEach(function(coach) {
+                        $('#coach_suggestions').append(`<option value="${coach.coach_name}">`);
+                    });
+                }
+            });
 
-// When a coach is selected (or typed), fetch and fill in the coach details
-$('#coach_name').on('input', function() {
-const coach_name = $(this).val();
-if (coach_name) {
-$.ajax({
-url: 'fetch_coach_details.php', // Endpoint to get coach details
-method: 'GET',
-data: { coach_name: coach_name },
-success: function(data) {
-    const coach = JSON.parse(data);
-    if (coach) {
-        $('#coach_district').val(coach.coach_district);
-        $('#coach_address').val(coach.coach_address);
-        $('#coach_nic').val(coach.coach_nic);
-        $('#coach_phone').val(coach.coach_phone);
-        $('input[name="registered"][value="' + coach.registered + '"]').prop('checked', true);
-    }
-}
-});
-}
-});
-});
-
-</script> 
-
-
-<script>
-    $(document).ready(function() {
-        // Initialize Select2
-        $('#sportsDropdown').select2();
-
-        // Fetch sports from the PHP file via AJAX
-        $.ajax({
-            url: 'get_sports.php', // URL of the PHP file to fetch sports
-            method: 'GET',
-            success: function(data) {
-                const sports = JSON.parse(data); // Parse the JSON response
-                sports.forEach(function(sport) {
-                    $('#sportsDropdown').append(new Option(sport, sport));
-                });
-            },
-            error: function(error) {
-                console.error("Error fetching sports:", error);
-            }
+            // When a coach is selected (or typed), fetch and fill in the coach details
+            $('#coach_name').on('input', function() {
+                const coach_name = $(this).val();
+                if (coach_name) {
+                    $.ajax({
+                        url: 'fetch_coach_details.php',
+                        method: 'GET',
+                        data: { coach_name: coach_name },
+                        success: function(data) {
+                            const coach = JSON.parse(data);
+                            if (coach) {
+                                $('#coach_district').val(coach.coach_district);
+                                $('#coach_address').val(coach.coach_address);
+                                $('#coach_nic').val(coach.coach_nic);
+                                $('#coach_phone').val(coach.coach_phone);
+                                $('input[name="registered"][value="' + coach.registered + '"]').prop('checked', true);
+                            }
+                        }
+                    });
+                }
+            });
         });
 
-        // Show dropdown on button click
-        $('#selectSportsBtn').click(function() {
-            $('#sportsDropdown').select2('open');
+        $(document).ready(function() {
+            // Initialize Select2
+            $('#sportsDropdown').select2();
+
+            // Fetch sports from the PHP file via AJAX
+            $.ajax({
+                url: 'get_sports.php',
+                method: 'GET',
+                success: function(data) {
+                    const sports = JSON.parse(data);
+                    sports.forEach(function(sport) {
+                        $('#sportsDropdown').append(new Option(sport, sport));
+                    });
+                },
+                error: function(error) {
+                    console.error("Error fetching sports:", error);
+                }
+            });
+
+            // Show dropdown on button click
+            $('#selectSportsBtn').click(function() {
+                $('#sportsDropdown').select2('open');
+            });
+
+            // Save selected sports
+            $('#sportsDropdown').on('change', function() {
+                const selectedSports = $(this).val();
+                $('#selectedSportsDisplay').text("තෝරාගත් ක්‍රීඩා: " + selectedSports.join(", "));
+                $('#selectedSportsInput').val(selectedSports.join(", "));
+            });
         });
 
-        // Save selected sports
-        $('#sportsDropdown').on('change', function() {
-            const selectedSports = $(this).val();
-            
-            // Display selected sports
-            $('#selectedSportsDisplay').text("Selected Sports: " + selectedSports.join(", "));
+        // Populate the year dropdown and auto-select the current year
+        const currentYear = new Date().getFullYear();
+        const yearSelect = document.getElementById('year');
 
-            // Save selected sports to the hidden input
-            $('#selectedSportsInput').val(selectedSports.join(", "));
-        });
-    });
-</script>  
-
-<script>
-document.getElementById("saveSports").addEventListener("click", function () {
-    let selectedSports = [];
-    document.querySelectorAll(".sports-option:checked").forEach((checkbox) => {
-        selectedSports.push(checkbox.value);
-    });
-
-    // Store selected sports in a hidden input
-    document.getElementById("selectedSportsInput").value = selectedSports.join(",");
-    
-    // Display selected sports
-    document.getElementById("selectedSportsDisplay").innerText = "Selected: " + selectedSports.join(", ");
-
-    // Close the modal properly
-    let modalElement = document.getElementById("gameModal");
-    let modalInstance = bootstrap.Modal.getInstance(modalElement);
-    if (modalInstance) {
-        modalInstance.hide();
-    }
-});
-
-</script>
-
-<script>
-    // Populate the year dropdown and auto-select the current year
-    const currentYear = new Date().getFullYear();
-    const yearSelect = document.getElementById('year');
-
-    for (let year = currentYear - 50; year <= currentYear + 10; year++) {
-        const option = document.createElement('option');
-        option.value = year;
-        option.textContent = year;
-        if (year === currentYear) {
-            option.selected = true; // Auto-select the current year
-        }
-        yearSelect.appendChild(option);
-    }
-</script>
-
-<script>
-// Initialize variables
-let currentStep = 0;
-const steps = document.querySelectorAll('.step');
-const progressSteps = document.querySelectorAll('.progress-step');
-const submitButton = document.querySelector('.custom-btn'); // Submit button
-const studentPhotoInput = document.getElementById("student_photo");
-const photoPreview = document.getElementById("photo_preview");
-
-// Function to scroll the iframe
-function scrollToStepInIframe(step) {
-    const iframe = document.getElementById("yourIframeId"); // Use the ID of your iframe
-    const iframeDocument = iframe.contentWindow.document;
-    const stepElement = iframeDocument.querySelectorAll('.step')[step];
-    
-    // Ensure the iframe is fully loaded before trying to access its content
-    if (iframeDocument && stepElement) {
-        const topPosition = stepElement.getBoundingClientRect().top + iframe.contentWindow.pageYOffset;
-        iframe.contentWindow.scrollTo({
-            top: topPosition - 50, // Offset to scroll just above the step
-            behavior: 'smooth'
-        });
-    }
-}
-
-// Function to scroll the parent window to top
-function scrollToParentTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-// Show step function
-function showStep(step) {
-    // Hide all steps and reset progress
-    steps.forEach((el, index) => {
-        el.classList.toggle('active', index === step);
-    });
-
-    // Update the progress steps
-    progressSteps.forEach((el, index) => {
-        el.classList.toggle('active', index <= step); // Highlight progress steps up to current
-    });
-
-    // Show submit button only on the 3rd step
-    if (step === 2) {
-        submitButton.style.display = 'block';
-    } else {
-        submitButton.style.display = 'none';
-    }
-
-    // Scroll the iframe or the parent page
-    if (window.location !== window.parent.location) {
-        // In iframe, scroll to step inside iframe
-        scrollToStepInIframe(step);
-    } else {
-        // If it's not inside an iframe, scroll the parent to top
-        scrollToParentTop();
-    }
-}
-
-// Handle the 'Next' button click
-document.querySelectorAll('.next-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-        if (currentStep < steps.length - 1) {
-            steps[currentStep].classList.remove('active');
-            progressSteps[currentStep].classList.remove('active');
-            currentStep++;
-            steps[currentStep].classList.add('active');
-            progressSteps[currentStep].classList.add('active');
-            showStep(currentStep); // Ensure step is updated properly
-        }
-    });
-});
-
-// Handle the 'Previous' button click
-document.querySelectorAll('.prev-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-        if (currentStep > 0) {
-            steps[currentStep].classList.remove('active');
-            progressSteps[currentStep].classList.remove('active');
-            currentStep--;
-            steps[currentStep].classList.add('active');
-            progressSteps[currentStep].classList.add('active');
-            showStep(currentStep); // Ensure step is updated properly
-        }
-    });
-});
-
-// Photo preview for student photo input
-studentPhotoInput.addEventListener("change", function () {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            photoPreview.src = e.target.result;
-            photoPreview.style.display = "block";
-        };
-        reader.readAsDataURL(file);
-    } else {
-        photoPreview.style.display = "none";
-    }
-});
-
-// Initialize by showing the first step
-showStep(currentStep);
-
-</script>
-  
-</body>
-</html>
+       

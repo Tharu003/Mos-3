@@ -7,7 +7,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $full_name = $_POST['full_name'];
     $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
+    if ($gender == 'male') {
+        $gender_sinhala = 'පුරුෂ';  // Male in Sinhala
+    } elseif ($gender == 'female') {
+        $gender_sinhala = 'ස්ත්‍රී';  // Female in Sinhala
+    } else {
+        $gender_sinhala = '';  // Empty or invalid gender
+    }
     $district = isset($_POST['district']) ? $_POST['district'] : '';
+    if ($district == 'galle') {
+        $district_sinhala = 'ගාල්ල';
+    } elseif ($district == 'mathara') {
+        $district_sinhala = 'මාතර';
+    } elseif ($district == 'hambanthota') {
+        $district_sinhala = 'හම්බන්තොට';
+    } else {
+        $district_sinhala = '';  // Empty or invalid district
+    }
     $birthday = $_POST['birthday'];
     $nic = $_POST['nic'];
     $phone = $_POST['phone'];

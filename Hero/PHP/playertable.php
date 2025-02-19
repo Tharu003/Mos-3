@@ -103,8 +103,8 @@ body{
                     <label for="gender">Gender:</label>
                     <select name="gender" id="gender" class="form-control">
                         <option value="">Select Gender</option>
-                        <option value="Male" <?= ($_GET['gender'] ?? '') == 'Male' ? 'selected' : '' ?>>Male</option>
-                        <option value="Female" <?= ($_GET['gender'] ?? '') == 'Female' ? 'selected' : '' ?>>Female</option>
+                        <option value="Male" <?= ($_GET['gender'] ?? '') == 'Male' ? 'selected' : '' ?>>පුරුෂ</option>
+                        <option value="Female" <?= ($_GET['gender'] ?? '') == 'Female' ? 'selected' : '' ?>>ස්ත්‍රී</option>
                     </select>
                 </div>
             </div>
@@ -131,8 +131,18 @@ body{
         <table id="table1" class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>Photo</th><th>Name</th><th>Full Name</th><th>NIC</th><th>Gender</th><th>District</th><th>Birthday</th>
-                    <th>Phone</th><th>School</th><th>Address</th><th>Participated Events</th>
+                <th>පින්තූරය</th>
+                <th>නම</th>
+                <th>සම්පූර්ණ නම</th>
+                <th>ජාතික හැඳුනුම්පත</th>
+                <th>ස්ත්‍රී/පුරුෂ</th>
+                <th>දිස්ත්‍රික්කය</th>
+                <th>උපන් දිනය</th>
+                <th>දුරකථන අංකය</th>
+                <th>පාසල</th>
+                <th>ලිපිනය</th>
+                <th>සිදුවීම්වල සහභාගිවීම්</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -164,9 +174,16 @@ body{
         <table id="table2" class="table table-striped table-bordered d-none">
             <thead class="thead-dark">
                 <tr>
-                    <th>Grama Wasama</th><th>Divisional</th><th>Coach Name</th>
-                    <th>School Achievement</th><th>District Achievement</th><th>Provincial Achievement</th>
-                    <th>National Achievement</th><th>International Achievement</th><th>Club Info</th>
+                <th>ග්‍රාම වසම</th>
+                <th>දිස්ත්‍රික්කය</th>
+                <th>කේච් නම</th>
+                <th>පාසල් කුසලතා</th>
+                <th>දිස්ත්‍රික්ක කුසලතා</th>
+                <th>පලාත් කුසලතා</th>
+                <th>ජාතික කුසලතා</th>
+                <th>අන්තර්ජාතික කුසලතා</th>
+                <th>ක්‍රීඩා සමාජයේ තොරතුරු</th>
+
                 </tr>
             </thead>
             <tbody>
